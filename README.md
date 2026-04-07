@@ -98,17 +98,20 @@ open index.html
 
 ### カラーパレット
 
-- Primary: `#5BA88E`（ティールグリーン）
-- Mint: `#A8D5BA` / Light: `#D4EDE0`
-- Sky: `#85C5D3` / Light: `#C8E4EF`
-- Text: `#2D2D2D` / Secondary: `#5A5A5A` / Muted: `#8A8A8A`
+- Primary: `#10B981`（エメラルドグリーン）
+- Accent: `#A7F3D0`（アクセントバー）/ Light: `#D1FAE5`
+- Sky: `#7DD3FC` / Light: `#BAE6FD`
+- Text Emphasis: `#0F172A` / Primary: `#1E293B` / Secondary: `#475569` / Muted: `#64748B`
+- Background: `#F8FAFC`（Slate-50）
+- Border: `#E2E8F0`（Slate-200）/ `#CBD5E1`（Slate-300）
 
 ### タイポグラフィ
 
-- Display: 52px / Bold
-- Title: 40px / Bold
-- Heading: 30px / Bold
+- Cover Title: 60px / Bold
+- Cover Subtitle: 48px / Medium
+- Chapter Title: 52px / Bold
+- Slide Title: 40px / Bold（`#10B981`）
 - Subheading: 24px / Medium
 - Body: 20px / Regular
 - Small: 17px / Regular
-- Caption: 14px / Regular
+- Caption/Label: 14px / Bold
