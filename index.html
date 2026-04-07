@@ -7,11 +7,635 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: #2D2D2D;
+      background: #FFFFFF;
+      line-height: 1.7;
+    }
+    ul, ol { list-style: none; }
+    strong { font-weight: 700; }
+    table { border-collapse: collapse; }
+
+    /* ========================================
+       SLIDES WRAPPER
+       ======================================== */
+    .slides-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ========================================
+       SLIDE BASE
+       ======================================== */
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .slide__inner {
+      width: 100%;
+      height: 100%;
+      padding: 80px 100px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slide__deco {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      pointer-events: none;
+    }
+
+    /* ========================================
+       COMMON ELEMENTS
+       ======================================== */
+    .section-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #5BA88E;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+    }
+    .slide__title {
+      font-size: 40px;
+      font-weight: 700;
+      color: #2D2D2D;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .slide__lead {
+      font-size: 20px;
+      color: #5A5A5A;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .slide__lead-accent {
+      font-size: 24px;
+      color: #3D8B6E;
+      font-weight: 500;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .slide__note {
+      font-size: 14px;
+      color: #8A8A8A;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    /* ========================================
+       DECORATIVE CIRCLES
+       ======================================== */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .deco-circle--cover-1 {
+      width: 720px; height: 720px;
+      bottom: -220px; left: -180px;
+      background: linear-gradient(140deg, #B8DEC8 0%, #9DCEB5 100%);
+      opacity: 0.7;
+    }
+    .deco-circle--cover-2 {
+      width: 500px; height: 500px;
+      top: 80px; right: -130px;
+      background: linear-gradient(160deg, #8ECAB0 0%, #7BBCD0 100%);
+      opacity: 0.55;
+    }
+    .deco-circle--cover-3 {
+      width: 340px; height: 340px;
+      top: 160px; right: 180px;
+      background: linear-gradient(180deg, #A8D5BA 0%, #85C5D3 100%);
+      opacity: 0.4;
+    }
+    .deco-circle--cover-4 {
+      width: 220px; height: 220px;
+      top: 100px; right: 100px;
+      background: linear-gradient(135deg, #B8DFC8 0%, #8ECFDB 100%);
+      opacity: 0.35;
+    }
+    .deco-circle--cover-5 {
+      width: 420px; height: 420px;
+      bottom: -60px; right: 40px;
+      background: linear-gradient(200deg, #9DCEB5 0%, #85C5D3 100%);
+      opacity: 0.5;
+    }
+    .deco-circle--chapter-1 {
+      width: 360px; height: 360px;
+      bottom: -100px; right: -80px;
+      background: linear-gradient(135deg, #D4EDE0, #C8E4EF);
+      opacity: 0.5;
+    }
+    .deco-circle--concept-1 {
+      width: 500px; height: 500px;
+      top: -180px; right: -160px;
+      background: linear-gradient(135deg, #D4EDE0, #C8E4EF);
+      opacity: 0.3;
+    }
+    .deco-circle--closing-1 {
+      width: 600px; height: 600px;
+      bottom: -200px; right: -150px;
+      background: linear-gradient(135deg, #A8D5BA 0%, #85C5D3 100%);
+      opacity: 0.5;
+    }
+    .deco-circle--closing-2 {
+      width: 300px; height: 300px;
+      top: -80px; left: -80px;
+      background: linear-gradient(135deg, #D4EDE0, #C8E4EF);
+      opacity: 0.4;
+    }
+    .deco-circle--closing-3 {
+      width: 180px; height: 180px;
+      bottom: 120px; left: 100px;
+      background: linear-gradient(160deg, #C8E4EF 0%, #D4EDE0 100%);
+      opacity: 0.35;
+    }
+
+    /* ========================================
+       SLIDE: Cover
+       ======================================== */
+    .slide--cover { display: flex; align-items: center; }
+    .slide--cover .slide__content {
+      padding: 0 100px;
+      position: relative;
+      z-index: 1;
+      width: 60%;
+    }
+    .slide__client {
+      font-size: 20px; font-weight: 500;
+      color: #5A5A5A; margin-bottom: 32px;
+      letter-spacing: 0.1em;
+    }
+    .slide__title-main {
+      font-size: 56px; font-weight: 700;
+      line-height: 1.35; color: #2D2D2D;
+      margin-bottom: 48px;
+    }
+    .slide__title-sub { font-size: 44px; font-weight: 500; }
+    .slide__meta { margin-top: 48px; }
+    .slide__date {
+      font-size: 17px; color: #8A8A8A;
+      margin-bottom: 8px; letter-spacing: 0.1em;
+    }
+    .slide__company {
+      font-size: 24px; font-weight: 700;
+      color: #5BA88E; letter-spacing: 0.05em;
+    }
+
+    /* ========================================
+       SLIDE: TOC
+       ======================================== */
+    .slide--toc { display: flex; align-items: center; justify-content: center; }
+    .slide--toc .slide__inner {
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      max-width: 800px; margin: 0 auto;
+      padding: 80px 100px;
+    }
+    .toc__heading {
+      font-size: 30px; font-weight: 700;
+      color: #5BA88E; margin-bottom: 48px;
+      letter-spacing: 0.08em;
+    }
+    .toc__list { width: 100%; }
+    .toc__item {
+      display: flex; align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid #EEF2F0;
+    }
+    .toc__item--last { border-bottom: none; }
+    .toc__number {
+      font-size: 24px; font-weight: 700;
+      color: #5BA88E; width: 60px;
+      flex-shrink: 0; letter-spacing: 0.05em;
+    }
+    .toc__title { font-size: 24px; font-weight: 500; color: #2D2D2D; }
+
+    /* ========================================
+       SLIDE: Statement
+       ======================================== */
+    .slide--statement .slide__inner { justify-content: center; }
+    .statement__layout {
+      display: flex; flex-direction: column;
+      gap: 48px; max-width: 1400px;
+    }
+    .statement__quote-text {
+      font-size: 46px; font-weight: 700;
+      line-height: 1.5; color: #2D2D2D;
+      padding-left: 32px;
+      border-left: 4px solid #5BA88E;
+    }
+    .statement__body { padding-left: 36px; }
+    .statement__lead {
+      font-size: 20px; color: #5A5A5A;
+      line-height: 1.9; margin-bottom: 24px;
+    }
+    .statement__text {
+      font-size: 20px; color: #2D2D2D;
+      line-height: 1.9; margin-bottom: 16px;
+    }
+
+    /* ========================================
+       SLIDE: Chapter
+       ======================================== */
+    .slide--chapter {
+      display: flex; align-items: center;
+      justify-content: center; background: #FFFFFF;
+    }
+    .slide--chapter .slide__inner {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .chapter__content {
+      text-align: left; position: relative; z-index: 1;
+    }
+    .chapter__number {
+      font-size: 80px; font-weight: 700;
+      color: #A8D5BA; line-height: 1;
+      margin-bottom: 16px; letter-spacing: 0.05em;
+    }
+    .chapter__title {
+      font-size: 52px; font-weight: 700;
+      color: #2D2D2D; line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .chapter__accent {
+      width: 60px; height: 4px;
+      background: linear-gradient(135deg, #5BA88E, #7BBCD0);
+      border-radius: 2px; margin-bottom: 24px;
+    }
+    .chapter__subtitle {
+      font-size: 20px; color: #5A5A5A; font-weight: 400;
+    }
+
+    /* ========================================
+       SLIDE: Concept
+       ======================================== */
+    .slide--concept .slide__inner { justify-content: center; }
+    .concept__layout {
+      max-width: 1200px; display: flex;
+      flex-direction: column; gap: 48px;
+    }
+    .concept__message {
+      font-size: 44px; font-weight: 700;
+      line-height: 1.6; color: #2D2D2D;
+    }
+    .concept__message-dash { color: #5BA88E; font-weight: 400; }
+    .concept__sub { padding-left: 4px; }
+    .concept__description {
+      font-size: 24px; color: #5A5A5A; line-height: 1.9;
+    }
+
+    /* ========================================
+       COMPONENT: Grid 2x2
+       ======================================== */
+    .grid-2x2 { display: flex; flex-wrap: wrap; gap: 32px; flex: 1; }
+    .value-block {
+      width: 820px;
+      padding: 32px; background: #F7FAFA;
+      border-radius: 8px; border-left: 3px solid #5BA88E;
+    }
+    .value-block__number {
+      font-size: 14px; font-weight: 700;
+      color: #5BA88E; margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .value-block__title {
+      font-size: 24px; font-weight: 700;
+      color: #2D2D2D; margin-bottom: 16px;
+    }
+    .value-block__text {
+      font-size: 17px; color: #5A5A5A; line-height: 1.7;
+    }
+
+    /* ========================================
+       COMPONENT: Target Layout
+       ======================================== */
+    .target__layout { display: flex; gap: 48px; flex: 1; }
+    .target__primary {
+      flex: 1.2; padding: 32px; background: #F7FAFA;
+      border: 2px solid #5BA88E; border-radius: 8px;
+    }
+    .target__badge {
+      display: inline-block; font-size: 14px; font-weight: 700;
+      color: #FFFFFF; background: linear-gradient(135deg, #5BA88E, #7BBCD0);
+      padding: 4px 16px; border-radius: 4px;
+      margin-bottom: 16px; letter-spacing: 0.08em;
+    }
+    .target__badge--sub { background: #8A8A8A; }
+    .target__name {
+      font-size: 24px; font-weight: 700;
+      color: #2D2D2D; margin-bottom: 16px;
+    }
+    .target__text { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+    .target__secondary-group {
+      flex: 1; display: flex; flex-direction: column; gap: 24px;
+    }
+    .target__secondary {
+      padding: 24px; background: #F7FAFA;
+      border-radius: 8px; flex: 1;
+    }
+
+    /* ========================================
+       COMPONENT: Merit Grid
+       ======================================== */
+    .merit-grid { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+    .merit-grid__row { display: flex; gap: 24px; }
+    .merit-card {
+      flex: 1; padding: 24px 32px;
+      background: #F7FAFA; border-radius: 8px;
+      border-top: 3px solid #5BA88E;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .merit-card__label {
+      font-size: 12px; font-weight: 700;
+      color: #5BA88E; letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .merit-card__title {
+      font-size: 20px; font-weight: 700;
+      color: #2D2D2D; margin-bottom: 8px;
+    }
+    .merit-card__desc { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+    .merit-card__stat { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+    .stat-number { font-size: 36px; font-weight: 700; color: #3D8B6E; line-height: 1; }
+    .merit-grid__center { display: flex; justify-content: center; padding: 16px 0; }
+    .merit-grid__center-box {
+      padding: 24px 48px;
+      background: linear-gradient(135deg, #D4EDE0, #C8E4EF);
+      border-radius: 8px; text-align: center;
+    }
+    .merit-grid__center-text { font-size: 20px; color: #2D2D2D; line-height: 1.7; }
+
+    /* ========================================
+       COMPONENT: Detail Cards
+       ======================================== */
+    .detail-cards { display: flex; gap: 32px; flex: 1; }
+    .detail-card {
+      flex: 1; display: flex; flex-direction: column;
+      border: 1px solid #E0E8E6; border-radius: 8px; overflow: hidden;
+    }
+    .detail-card__header {
+      padding: 24px 32px; background: #F7FAFA;
+      border-bottom: 1px solid #EEF2F0;
+    }
+    .detail-card__title {
+      font-size: 24px; font-weight: 700;
+      color: #2D2D2D; margin-bottom: 8px;
+    }
+    .detail-card__hook { font-size: 17px; color: #3D8B6E; font-weight: 500; }
+    .detail-card__body { padding: 24px 32px; flex: 1; }
+    .detail-card__list { display: flex; flex-direction: column; gap: 16px; }
+    .detail-card__list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 17px; color: #5A5A5A; line-height: 1.7;
+    }
+
+    /* ========================================
+       LIST MARKERS (実DOM - Figma用)
+       ======================================== */
+    .list-marker {
+      display: block; width: 8px; height: 2px;
+      background: #5BA88E; margin-top: 13px; flex-shrink: 0;
+    }
+    .list-marker--issue {
+      display: block; width: 8px; height: 2px;
+      background: #C4836A; margin-top: 13px; flex-shrink: 0;
+    }
+    .list-dot {
+      display: block; width: 8px; height: 8px;
+      background: linear-gradient(135deg, #5BA88E, #7BBCD0);
+      border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+    }
+
+    /* ========================================
+       COMPONENT: Brand Columns
+       ======================================== */
+    .brand-columns { display: flex; gap: 48px; flex: 1; }
+    .brand-block { flex: 1; display: flex; flex-direction: column; }
+    .brand-block__icon-area { margin-bottom: 24px; }
+    .brand-block__number { font-size: 48px; font-weight: 700; color: #A8D5BA; line-height: 1; }
+    .brand-block__title {
+      font-size: 24px; font-weight: 700; color: #2D2D2D;
+      margin-bottom: 24px; padding-bottom: 24px;
+      border-bottom: 2px solid #EEF2F0;
+    }
+    .brand-block__text { font-size: 17px; color: #5A5A5A; line-height: 1.9; }
+
+    /* ========================================
+       COMPONENT: Three / Two Column
+       ======================================== */
+    .three-col { display: flex; gap: 32px; flex: 1; }
+    .two-col { display: flex; gap: 48px; flex: 1; }
+    .two-col__left { flex: 1; }
+    .two-col__right { flex: 1; }
+
+    .feature-block {
+      flex: 1; padding: 32px; background: #F7FAFA;
+      border-radius: 8px; border-top: 3px solid #5BA88E;
+    }
+    .feature-block__title {
+      font-size: 24px; font-weight: 700;
+      color: #2D2D2D; margin-bottom: 24px;
+    }
+    .feature-block__text { font-size: 17px; color: #5A5A5A; line-height: 1.9; }
+
+    /* ========================================
+       COMPONENT: FV Mockup / Point List
+       ======================================== */
+    .fv-mockup { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .fv-mockup__placeholder {
+      width: 100%; height: 100%; min-height: 400px;
+      background: #F7FAFA; border: 2px dashed #E0E8E6;
+      border-radius: 8px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+    }
+    .fv-mockup__text { font-size: 24px; color: #8A8A8A; font-weight: 500; }
+    .fv-mockup__note { font-size: 14px; color: #8A8A8A; }
+
+    .point-list { display: flex; flex-direction: column; gap: 32px; }
+    .point-item { padding-left: 24px; border-left: 3px solid #5BA88E; }
+    .point-item__title { font-size: 20px; font-weight: 700; color: #2D2D2D; margin-bottom: 8px; }
+    .point-item__text { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+
+    /* ========================================
+       COMPONENT: Sitemap
+       ======================================== */
+    .sitemap { flex: 1; display: flex; flex-direction: column; gap: 32px; }
+    .sitemap__top { display: flex; justify-content: center; }
+    .sitemap__node {
+      padding: 16px 32px; border-radius: 6px;
+      font-size: 17px; font-weight: 700; text-align: center;
+    }
+    .sitemap__node--top {
+      background: linear-gradient(135deg, #5BA88E, #7BBCD0);
+      color: #FFFFFF; font-size: 20px; padding: 24px 48px;
+    }
+    .sitemap__node--cat {
+      background: #F7FAFA; color: #3D8B6E;
+      border: 1px solid #E0E8E6;
+    }
+    .sitemap__branches { display: flex; gap: 24px; }
+    .sitemap__branch { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .sitemap__leaves { display: flex; flex-direction: column; gap: 8px; }
+    .sitemap__leaf {
+      padding: 10px 16px; background: #FFFFFF;
+      border: 1px solid #EEF2F0; border-radius: 4px;
+      font-size: 14px; color: #5A5A5A; text-align: center;
+    }
+
+    /* ========================================
+       COMPONENT: Top Page Layout
+       ======================================== */
+    .toppage-layout { display: flex; flex-direction: column; gap: 32px; flex: 1; }
+    .toppage-nav { padding: 24px 32px; background: #F7FAFA; border-radius: 8px; }
+    .toppage-nav__heading { font-size: 20px; font-weight: 700; color: #2D2D2D; margin-bottom: 24px; }
+    .toppage-nav__items { display: flex; gap: 24px; }
+    .toppage-nav__item {
+      flex: 1; padding: 16px 24px; background: #FFFFFF;
+      border-radius: 6px; border: 1px solid #EEF2F0;
+    }
+    .toppage-nav__label { display: block; font-size: 17px; font-weight: 700; color: #2D2D2D; margin-bottom: 4px; }
+    .toppage-nav__note { display: block; font-size: 14px; color: #8A8A8A; }
+    .toppage-features { display: flex; gap: 32px; }
+    .toppage-feature { flex: 1; padding: 24px 32px; border-left: 3px solid #5BA88E; }
+    .toppage-feature__title { font-size: 20px; font-weight: 700; color: #2D2D2D; margin-bottom: 16px; }
+    .toppage-feature__text { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+
+    /* ========================================
+       COMPONENT: Solution Layout
+       ======================================== */
+    .solution-layout {
+      display: flex; flex: 1;
+      border: 1px solid #E0E8E6; border-radius: 8px; overflow: hidden;
+    }
+    .solution-col { padding: 32px; display: flex; flex-direction: column; }
+    .solution-col--issue { flex: 0.8; background: #FDF8F6; border-right: 1px solid #EEF2F0; }
+    .solution-col--plan { flex: 1.6; background: #FFFFFF; border-right: 1px solid #EEF2F0; }
+    .solution-col--effect { flex: 0.8; background: #EDF7F1; }
+    .solution-col__heading {
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.15em; margin-bottom: 24px;
+      padding-bottom: 16px;
+    }
+    .solution-col--issue .solution-col__heading { color: #C4836A; border-bottom: 2px solid #C4836A; }
+    .solution-col--plan .solution-col__heading { color: #5BA88E; border-bottom: 2px solid #5BA88E; }
+    .solution-col--effect .solution-col__heading { color: #3D8B6E; border-bottom: 2px solid #3D8B6E; }
+    .solution-col__text { font-size: 17px; color: #5A5A5A; line-height: 1.9; }
+    .solution-col__list { display: flex; flex-direction: column; gap: 10px; }
+    .solution-col__list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 17px; color: #5A5A5A; line-height: 1.7;
+    }
+    .solution-col__plus {
+      margin-top: auto; padding-top: 24px;
+      border-top: 1px solid #EEF2F0;
+    }
+    .solution-col__plus-heading {
+      font-size: 14px; font-weight: 700;
+      color: #5BA88E; margin-bottom: 16px;
+    }
+    .solution-col__effect-list { display: flex; flex-direction: column; gap: 16px; }
+    .solution-col__effect-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 17px; color: #3D8B6E; font-weight: 500;
+    }
+    .solution-col__cost { margin-top: auto; padding-top: 24px; border-top: 1px solid #EEF2F0; }
+    .solution-col__cost-text { font-size: 20px; font-weight: 700; color: #3D8B6E; }
+
+    /* ========================================
+       COMPONENT: Anniversary
+       ======================================== */
+    .anniversary-layout { display: flex; gap: 32px; flex: 1; }
+    .anniversary-block { flex: 1; padding: 32px; border-left: 3px solid #5BA88E; }
+    .anniversary-block__title { font-size: 24px; font-weight: 700; color: #2D2D2D; margin-bottom: 24px; }
+    .anniversary-block__text { font-size: 17px; color: #5A5A5A; line-height: 1.9; }
+
+    /* ========================================
+       COMPONENT: Cost Table
+       ======================================== */
+    .cost-table-wrap { flex: 1; display: flex; flex-direction: column; }
+    .cost-table { width: 100%; margin-bottom: 24px; }
+    .cost-table__th {
+      padding: 24px 32px; background: #F7FAFA;
+      font-size: 17px; font-weight: 700; color: #2D2D2D;
+      text-align: left; border-bottom: 2px solid #E0E8E6;
+    }
+    .cost-table__th--price { text-align: right; width: 200px; }
+    .cost-table__td {
+      padding: 24px 32px; font-size: 17px; color: #5A5A5A;
+      border-bottom: 1px solid #EEF2F0; vertical-align: top;
+    }
+    .cost-table__td--price { text-align: right; font-weight: 500; color: #2D2D2D; white-space: nowrap; }
+    .cost-table__td--total {
+      font-weight: 700; color: #2D2D2D;
+      border-top: 2px solid #E0E8E6; border-bottom: none;
+    }
+
+    /* ========================================
+       COMPONENT: Schedule
+       ======================================== */
+    .schedule { flex: 1; display: flex; flex-direction: column; gap: 24px; padding: 32px 0; }
+    .schedule__row { display: flex; align-items: center; gap: 24px; }
+    .schedule__phase {
+      width: 260px; flex-shrink: 0;
+      font-size: 17px; font-weight: 500; color: #2D2D2D;
+      text-align: right; padding-right: 24px;
+    }
+    .schedule__bar-area {
+      flex: 1; height: 36px; background: #F7FAFA;
+      border-radius: 4px; position: relative;
+    }
+    .schedule__bar {
+      height: 100%;
+      background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+      border-radius: 4px; position: absolute; top: 0;
+    }
+    .schedule__bar--1 { left: 0%; width: 33%; }
+    .schedule__bar--2 { left: 16%; width: 33%; }
+    .schedule__bar--3 { left: 33%; width: 33%; }
+    .schedule__bar--4 { left: 66%; width: 17%; }
+    .schedule__bar--5 { left: 83%; width: 17%; }
+    .schedule__period { width: 120px; flex-shrink: 0; font-size: 14px; color: #8A8A8A; }
+
+    /* ========================================
+       COMPONENT: Team
+       ======================================== */
+    .team-layout { display: flex; gap: 32px; flex: 1; }
+    .team-member {
+      flex: 1; padding: 32px; background: #F7FAFA;
+      border-radius: 8px; border-top: 3px solid #5BA88E;
+      display: flex; flex-direction: column;
+    }
+    .team-member__role {
+      font-size: 14px; font-weight: 700; color: #5BA88E;
+      letter-spacing: 0.08em; margin-bottom: 16px;
+    }
+    .team-member__name { font-size: 24px; font-weight: 700; color: #2D2D2D; margin-bottom: 24px; }
+    .team-member__desc { font-size: 17px; color: #5A5A5A; line-height: 1.7; }
+
+    /* ========================================
+       SLIDE: Closing
+       ======================================== */
+    .slide--closing { display: flex; align-items: center; justify-content: center; }
+    .slide--closing .slide__content { position: relative; z-index: 1; text-align: center; }
+    .closing__message { font-size: 30px; font-weight: 500; color: #2D2D2D; line-height: 1.8; margin-bottom: 60px; }
+    .closing__company-name { font-size: 36px; font-weight: 700; color: #5BA88E; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .closing__company-sub { font-size: 14px; color: #8A8A8A; letter-spacing: 0.15em; }
+  </style>
 </head>
 <body>
 
-<div class="slides-wrapper" id="slidesWrapper">
+<div class="slides-wrapper">
 
   <!-- ============================================
        SLIDE 01: 表紙
@@ -68,7 +692,7 @@
           <span class="toc__number">06</span>
           <span class="toc__title">各ページの設計</span>
         </li>
-        <li class="toc__item">
+        <li class="toc__item toc__item--last">
           <span class="toc__number">07</span>
           <span class="toc__title">実現に向けて</span>
         </li>
@@ -165,34 +789,22 @@
         <div class="value-block">
           <div class="value-block__number">01</div>
           <h3 class="value-block__title">50年の歩み</h3>
-          <p class="value-block__text">
-            地域の中で患者さんと向き合い続けてきた歴史。<br>
-            単なる実績ではなく、"信頼そのもの"。
-          </p>
+          <p class="value-block__text">地域の中で患者さんと向き合い続けてきた歴史。<br>単なる実績ではなく、"信頼そのもの"。</p>
         </div>
         <div class="value-block">
           <div class="value-block__number">02</div>
           <h3 class="value-block__title">専門性 &times; 身近さ</h3>
-          <p class="value-block__text">
-            大学病院としての安心感と、<br>
-            地域で「まず相談できる」存在の両立。
-          </p>
+          <p class="value-block__text">大学病院としての安心感と、<br>地域で「まず相談できる」存在の両立。</p>
         </div>
         <div class="value-block">
           <div class="value-block__number">03</div>
           <h3 class="value-block__title">人の温度</h3>
-          <p class="value-block__text">
-            泥臭く地道に積み上げてきた、<br>
-            一人ひとりへの丁寧な関わり。
-          </p>
+          <p class="value-block__text">泥臭く地道に積み上げてきた、<br>一人ひとりへの丁寧な関わり。</p>
         </div>
         <div class="value-block">
           <div class="value-block__number">04</div>
           <h3 class="value-block__title">本質志向</h3>
-          <p class="value-block__text">
-            見た目ではなく、患者さんのために<br>
-            本当に良いものを追求する姿勢。
-          </p>
+          <p class="value-block__text">見た目ではなく、患者さんのために<br>本当に良いものを追求する姿勢。</p>
         </div>
       </div>
     </div>
@@ -221,24 +833,16 @@
           <div class="target__secondary">
             <div class="target__badge target__badge--sub">Secondary</div>
             <h3 class="target__name">連携医療機関</h3>
-            <p class="target__text">
-              専用ページを設け、検査情報・空床情報・<br>
-              予約導線など実務的な情報を集約。
-            </p>
+            <p class="target__text">専用ページを設け、検査情報・空床情報・<br>予約導線など実務的な情報を集約。</p>
           </div>
           <div class="target__secondary">
             <div class="target__badge target__badge--sub">Secondary</div>
             <h3 class="target__name">求職者</h3>
-            <p class="target__text">
-              採用特設ページにて、<br>
-              働く環境と価値観を伝える構成。
-            </p>
+            <p class="target__text">採用特設ページにて、<br>働く環境と価値観を伝える構成。</p>
           </div>
         </div>
       </div>
-      <p class="slide__note">
-        ※ 患者さまへの向き合い方そのものが、連携医療機関や求職者にとっての信頼判断にもつながると考えています。
-      </p>
+      <p class="slide__note">※ 患者さまへの向き合い方そのものが、連携医療機関や求職者にとっての信頼判断にもつながると考えています。</p>
     </div>
   </section>
 
@@ -287,10 +891,7 @@
         </div>
         <div class="merit-grid__center">
           <div class="merit-grid__center-box">
-            <p class="merit-grid__center-text">
-              すべてが<strong>患者さまへの価値向上</strong>と<br>
-              <strong>経営の安定</strong>へつながっていく
-            </p>
+            <p class="merit-grid__center-text">すべてが<strong>患者さまへの価値向上</strong>と<br><strong>経営の安定</strong>へつながっていく</p>
           </div>
         </div>
         <div class="merit-grid__row">
@@ -329,9 +930,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>サイト全体の構造・導線を見直し、必要な情報にスムーズにたどり着ける設計</li>
-              <li>「どこを見ればいいかわからない」「受診できるのか不安」という迷いを解消</li>
-              <li>「まず相談してみよう」と思える状態をつくり、初診患者の増加へ</li>
+              <li><span class="list-marker"></span><span>サイト全体の構造・導線を見直し、必要な情報にスムーズにたどり着ける設計</span></li>
+              <li><span class="list-marker"></span><span>「どこを見ればいいかわからない」「受診できるのか不安」という迷いを解消</span></li>
+              <li><span class="list-marker"></span><span>「まず相談してみよう」と思える状態をつくり、初診患者の増加へ</span></li>
             </ul>
           </div>
         </div>
@@ -342,9 +943,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>情報設計と導線整理により、問い合わせ<strong>30%削減</strong>を目指す</li>
-              <li>1件3分 &times; 30件 ＝ <strong>1日約90分の時間創出</strong></li>
-              <li>患者さん一人ひとりに丁寧に向き合える余裕が生まれる</li>
+              <li><span class="list-marker"></span><span>情報設計と導線整理により、問い合わせ<strong>30%削減</strong>を目指す</span></li>
+              <li><span class="list-marker"></span><span>1件3分 &times; 30件 ＝ <strong>1日約90分の時間創出</strong></span></li>
+              <li><span class="list-marker"></span><span>患者さん一人ひとりに丁寧に向き合える余裕が生まれる</span></li>
             </ul>
           </div>
         </div>
@@ -367,9 +968,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>日々の取り組みや患者さんへの向き合い方がサイトを通して伝わる</li>
-              <li>「この病院で働く意味」や「仕事の価値」を実感できるように</li>
-              <li>誇りが日々の接し方に表れ、患者さんの安心感にもつながる</li>
+              <li><span class="list-marker"></span><span>日々の取り組みや患者さんへの向き合い方がサイトを通して伝わる</span></li>
+              <li><span class="list-marker"></span><span>「この病院で働く意味」や「仕事の価値」を実感できるように</span></li>
+              <li><span class="list-marker"></span><span>誇りが日々の接し方に表れ、患者さんの安心感にもつながる</span></li>
             </ul>
           </div>
         </div>
@@ -380,9 +981,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>貴院の大切にしていること、「ここでどんな医療ができるか」が伝わる設計</li>
-              <li>価値観に共感した人材の応募 &rarr; <strong>ミスマッチの少ない採用</strong></li>
-              <li>定着率の向上・早期離職の防止 &rarr; 安定した医療体制へ</li>
+              <li><span class="list-marker"></span><span>貴院の大切にしていること、「ここでどんな医療ができるか」が伝わる設計</span></li>
+              <li><span class="list-marker"></span><span>価値観に共感した人材の応募 &rarr; <strong>ミスマッチの少ない採用</strong></span></li>
+              <li><span class="list-marker"></span><span>定着率の向上・早期離職の防止 &rarr; 安定した医療体制へ</span></li>
             </ul>
           </div>
         </div>
@@ -405,9 +1006,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>専門性や受け入れ体制を明確に伝え、紹介判断をしやすくする</li>
-              <li>機能的な連携 &rarr; <strong>"安心して任せられる"信頼関係</strong>へ</li>
-              <li>患者さんが適切なタイミングで医療につながる環境を整備</li>
+              <li><span class="list-marker"></span><span>専門性や受け入れ体制を明確に伝え、紹介判断をしやすくする</span></li>
+              <li><span class="list-marker"></span><span>機能的な連携 &rarr; <strong>"安心して任せられる"信頼関係</strong>へ</span></li>
+              <li><span class="list-marker"></span><span>患者さんが適切なタイミングで医療につながる環境を整備</span></li>
             </ul>
           </div>
         </div>
@@ -418,9 +1019,9 @@
           </div>
           <div class="detail-card__body">
             <ul class="detail-card__list">
-              <li>現行：CMS未導入のため更新のたびに外部依頼 &rarr; <strong>年間約80万円</strong></li>
-              <li>提案：CMS導入で院内更新を可能に &rarr; <strong>年間30〜40万円に圧縮</strong></li>
-              <li>削減したコスト・時間を患者対応や情報発信に充当</li>
+              <li><span class="list-marker"></span><span>現行：CMS未導入のため更新のたびに外部依頼 &rarr; <strong>年間約80万円</strong></span></li>
+              <li><span class="list-marker"></span><span>提案：CMS導入で院内更新を可能に &rarr; <strong>年間30〜40万円に圧縮</strong></span></li>
+              <li><span class="list-marker"></span><span>削減したコスト・時間を患者対応や情報発信に充当</span></li>
             </ul>
           </div>
         </div>
@@ -455,43 +1056,19 @@
       <p class="slide__lead">貴院らしさを形づくる3つの要素を軸に、サイト全体のトーンを設計します。</p>
       <div class="brand-columns">
         <div class="brand-block">
-          <div class="brand-block__icon-area">
-            <span class="brand-block__number">01</span>
-          </div>
+          <div class="brand-block__icon-area"><span class="brand-block__number">01</span></div>
           <h3 class="brand-block__title">専門性 &times; 地域密着</h3>
-          <p class="brand-block__text">
-            大学病院としての安心感と、<br>
-            地域の中で「まず相談できる存在」<br>
-            であるという距離感の両立。<br>
-            高度医療機関としての信頼性に加え、<br>
-            "相談しやすさ"も同時に伝わる設計。
-          </p>
+          <p class="brand-block__text">大学病院としての安心感と、<br>地域の中で「まず相談できる存在」<br>であるという距離感の両立。<br>高度医療機関としての信頼性に加え、<br>"相談しやすさ"も同時に伝わる設計。</p>
         </div>
         <div class="brand-block">
-          <div class="brand-block__icon-area">
-            <span class="brand-block__number">02</span>
-          </div>
+          <div class="brand-block__icon-area"><span class="brand-block__number">02</span></div>
           <h3 class="brand-block__title">人の温度（あたたかさ）</h3>
-          <p class="brand-block__text">
-            単なる雰囲気ではなく、<br>
-            患者さん一人ひとりに向き合ってきた<br>
-            姿勢が結果としてにじみ出ているもの。<br>
-            過度に飾るのではなく、<br>
-            実際の関わりが自然と伝わる見せ方。
-          </p>
+          <p class="brand-block__text">単なる雰囲気ではなく、<br>患者さん一人ひとりに向き合ってきた<br>姿勢が結果としてにじみ出ているもの。<br>過度に飾るのではなく、<br>実際の関わりが自然と伝わる見せ方。</p>
         </div>
         <div class="brand-block">
-          <div class="brand-block__icon-area">
-            <span class="brand-block__number">03</span>
-          </div>
+          <div class="brand-block__icon-area"><span class="brand-block__number">03</span></div>
           <h3 class="brand-block__title">実直さ</h3>
-          <p class="brand-block__text">
-            50年かけてコツコツと積み上げた信頼。<br>
-            派手さや表面的な美しさではなく、<br>
-            日々の積み重ねで生まれたもの。<br>
-            一貫性のある表現で、<br>
-            "きちんとしている印象"を設計。
-          </p>
+          <p class="brand-block__text">50年かけてコツコツと積み上げた信頼。<br>派手さや表面的な美しさではなく、<br>日々の積み重ねで生まれたもの。<br>一貫性のある表現で、<br>"きちんとしている印象"を設計。</p>
         </div>
       </div>
     </div>
@@ -577,7 +1154,6 @@
       <div class="two-col">
         <div class="two-col__left">
           <div class="fv-mockup">
-            <!-- ファーストビューのモックアップエリア -->
             <div class="fv-mockup__placeholder">
               <p class="fv-mockup__text">FV デザインカンプ</p>
               <p class="fv-mockup__note">※ 別途デザインデータを共有</p>
@@ -588,24 +1164,15 @@
           <div class="point-list">
             <div class="point-item">
               <h3 class="point-item__title">なぜこの見せ方か</h3>
-              <p class="point-item__text">
-                専門性の信頼感と、地域に根ざした親しみやすさを<br>
-                ファーストビューで同時に伝えるデザイン。
-              </p>
+              <p class="point-item__text">専門性の信頼感と、地域に根ざした親しみやすさを<br>ファーストビューで同時に伝えるデザイン。</p>
             </div>
             <div class="point-item">
               <h3 class="point-item__title">最初に伝えること</h3>
-              <p class="point-item__text">
-                「ここなら安心して相談できる」という<br>
-                第一印象をつくる。
-              </p>
+              <p class="point-item__text">「ここなら安心して相談できる」という<br>第一印象をつくる。</p>
             </div>
             <div class="point-item">
               <h3 class="point-item__title">ブランディングとの紐付け</h3>
-              <p class="point-item__text">
-                人の温度・実直さ・専門性を、<br>
-                色・写真・レイアウトで表現。
-              </p>
+              <p class="point-item__text">人の温度・実直さ・専門性を、<br>色・写真・レイアウトで表現。</p>
             </div>
           </div>
         </div>
@@ -646,17 +1213,11 @@
         <div class="toppage-features">
           <div class="toppage-feature">
             <h3 class="toppage-feature__title">症状・悩みから探すナビ</h3>
-            <p class="toppage-feature__text">
-              選択式のお悩みナビをトップページ内に配置。<br>
-              患者さまが自分に合った情報へたどり着ける。
-            </p>
+            <p class="toppage-feature__text">選択式のお悩みナビをトップページ内に配置。<br>患者さまが自分に合った情報へたどり着ける。</p>
           </div>
           <div class="toppage-feature">
             <h3 class="toppage-feature__title">コンテンツの情報順序</h3>
-            <p class="toppage-feature__text">
-              状況別入り口 &rarr; 症状ナビ &rarr; 診療科 &rarr;<br>
-              お知らせ &rarr; アクセス の流れで構成。
-            </p>
+            <p class="toppage-feature__text">状況別入り口 &rarr; 症状ナビ &rarr; 診療科 &rarr;<br>お知らせ &rarr; アクセス の流れで構成。</p>
           </div>
         </div>
       </div>
@@ -674,28 +1235,15 @@
       <div class="three-col">
         <div class="feature-block">
           <h3 class="feature-block__title">スマホ最適化</h3>
-          <p class="feature-block__text">
-            よく使われる導線は<br>
-            指の届きやすい位置に配置。<br>
-            情報の優先順位を整理し、<br>
-            操作しやすさを重視。
-          </p>
+          <p class="feature-block__text">よく使われる導線は<br>指の届きやすい位置に配置。<br>情報の優先順位を整理し、<br>操作しやすさを重視。</p>
         </div>
         <div class="feature-block">
           <h3 class="feature-block__title">入力の最適化</h3>
-          <p class="feature-block__text">
-            文字入力の切り替えや<br>
-            入力補助など、細かな操作でも<br>
-            ストレスが生まれない設計。
-          </p>
+          <p class="feature-block__text">文字入力の切り替えや<br>入力補助など、細かな操作でも<br>ストレスが生まれない設計。</p>
         </div>
         <div class="feature-block">
           <h3 class="feature-block__title">アクセシビリティ</h3>
-          <p class="feature-block__text">
-            年齢層の幅広い患者さんを想定。<br>
-            視認性・操作性・文字サイズに<br>
-            配慮した設計。
-          </p>
+          <p class="feature-block__text">年齢層の幅広い患者さんを想定。<br>視認性・操作性・文字サイズに<br>配慮した設計。</p>
         </div>
       </div>
     </div>
@@ -728,35 +1276,30 @@
       <div class="solution-layout">
         <div class="solution-col solution-col--issue">
           <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">
-            来院前に必要な情報が<br>
-            十分に伝わっておらず、<br>
-            不安や問い合わせが<br>
-            発生している可能性
-          </p>
+          <p class="solution-col__text">来院前に必要な情報が<br>十分に伝わっておらず、<br>不安や問い合わせが<br>発生している可能性</p>
         </div>
         <div class="solution-col solution-col--plan">
           <h3 class="solution-col__heading">施策</h3>
           <ul class="solution-col__list">
-            <li>初診案内ページの設置</li>
-            <li>入院・面会案内の整理</li>
-            <li>FAQの設置</li>
-            <li>手続き・費用・生活などを事前に整理</li>
+            <li><span class="list-marker"></span><span>初診案内ページの設置</span></li>
+            <li><span class="list-marker"></span><span>入院・面会案内の整理</span></li>
+            <li><span class="list-marker"></span><span>FAQの設置</span></li>
+            <li><span class="list-marker"></span><span>手続き・費用・生活などを事前に整理</span></li>
           </ul>
           <div class="solution-col__plus">
             <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
             <ul class="solution-col__list">
-              <li>チャットボットの導入</li>
-              <li>来院〜会計のフローをUI上で追体験<br>できる仕組み</li>
+              <li><span class="list-marker"></span><span>チャットボットの導入</span></li>
+              <li><span class="list-marker"></span><span>来院〜会計のフローをUI上で追体験できる仕組み</span></li>
             </ul>
           </div>
         </div>
         <div class="solution-col solution-col--effect">
           <h3 class="solution-col__heading">効果</h3>
           <ul class="solution-col__effect-list">
-            <li>不安の軽減</li>
-            <li>自己解決の促進</li>
-            <li>問い合わせ削減</li>
+            <li><span class="list-dot"></span><span>不安の軽減</span></li>
+            <li><span class="list-dot"></span><span>自己解決の促進</span></li>
+            <li><span class="list-dot"></span><span>問い合わせ削減</span></li>
           </ul>
         </div>
       </div>
@@ -773,36 +1316,31 @@
       <div class="solution-layout">
         <div class="solution-col solution-col--issue">
           <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">
-            必要な情報にすぐ<br>
-            アクセスできないことで、<br>
-            やり取りに時間がかかる<br>
-            可能性
-          </p>
+          <p class="solution-col__text">必要な情報にすぐ<br>アクセスできないことで、<br>やり取りに時間がかかる<br>可能性</p>
         </div>
         <div class="solution-col solution-col--plan">
           <h3 class="solution-col__heading">施策</h3>
           <ul class="solution-col__list">
-            <li>検査情報（検査機器一覧と対応内容）</li>
-            <li>空床情報</li>
-            <li>予約導線の整備</li>
-            <li>紹介状テンプレート（PDF/DOC）+記入例</li>
-            <li>紹介〜退院〜逆紹介のフロー図解</li>
+            <li><span class="list-marker"></span><span>検査情報（検査機器一覧と対応内容）</span></li>
+            <li><span class="list-marker"></span><span>空床情報</span></li>
+            <li><span class="list-marker"></span><span>予約導線の整備</span></li>
+            <li><span class="list-marker"></span><span>紹介状テンプレート（PDF/DOC）+記入例</span></li>
+            <li><span class="list-marker"></span><span>紹介〜退院〜逆紹介のフロー図解</span></li>
           </ul>
           <div class="solution-col__plus">
             <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
             <ul class="solution-col__list">
-              <li>勉強会の告知・地域連携だよりの発信</li>
-              <li>よくある紹介ケースの導線案内</li>
+              <li><span class="list-marker"></span><span>勉強会の告知・地域連携だよりの発信</span></li>
+              <li><span class="list-marker"></span><span>よくある紹介ケースの導線案内</span></li>
             </ul>
           </div>
         </div>
         <div class="solution-col solution-col--effect">
           <h3 class="solution-col__heading">効果</h3>
           <ul class="solution-col__effect-list">
-            <li>連携のスムーズ化</li>
-            <li>紹介数の増加</li>
-            <li>関係性の強化</li>
+            <li><span class="list-dot"></span><span>連携のスムーズ化</span></li>
+            <li><span class="list-dot"></span><span>紹介数の増加</span></li>
+            <li><span class="list-dot"></span><span>関係性の強化</span></li>
           </ul>
         </div>
       </div>
@@ -819,38 +1357,32 @@
       <div class="solution-layout">
         <div class="solution-col solution-col--issue">
           <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">
-            求職者にとって、<br>
-            実際の働く環境や<br>
-            雰囲気が見えづらく、<br>
-            応募のハードルに<br>
-            なっている可能性
-          </p>
+          <p class="solution-col__text">求職者にとって、<br>実際の働く環境や<br>雰囲気が見えづらく、<br>応募のハードルに<br>なっている可能性</p>
         </div>
         <div class="solution-col solution-col--plan">
           <h3 class="solution-col__heading">施策</h3>
           <ul class="solution-col__list">
-            <li>採用特設ページの設置</li>
-            <li>先輩インタビュー</li>
-            <li>職場紹介（写真・動画）</li>
-            <li>募集要項の整理（カスタム投稿）</li>
+            <li><span class="list-marker"></span><span>採用特設ページの設置</span></li>
+            <li><span class="list-marker"></span><span>先輩インタビュー</span></li>
+            <li><span class="list-marker"></span><span>職場紹介（写真・動画）</span></li>
+            <li><span class="list-marker"></span><span>募集要項の整理（カスタム投稿）</span></li>
           </ul>
           <div class="solution-col__plus">
             <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
             <ul class="solution-col__list">
-              <li>ターゲット別の訴求設計</li>
-              <li>新卒：教育体制・研修</li>
-              <li>既卒：働き方・職場の雰囲気</li>
-              <li>ベテラン：専門性・キャリア</li>
+              <li><span class="list-marker"></span><span>ターゲット別の訴求設計</span></li>
+              <li><span class="list-marker"></span><span>新卒：教育体制・研修</span></li>
+              <li><span class="list-marker"></span><span>既卒：働き方・職場の雰囲気</span></li>
+              <li><span class="list-marker"></span><span>ベテラン：専門性・キャリア</span></li>
             </ul>
           </div>
         </div>
         <div class="solution-col solution-col--effect">
           <h3 class="solution-col__heading">効果</h3>
           <ul class="solution-col__effect-list">
-            <li>応募数の増加</li>
-            <li>ミスマッチ防止</li>
-            <li>定着率の向上</li>
+            <li><span class="list-dot"></span><span>応募数の増加</span></li>
+            <li><span class="list-dot"></span><span>ミスマッチ防止</span></li>
+            <li><span class="list-dot"></span><span>定着率の向上</span></li>
           </ul>
         </div>
       </div>
@@ -867,40 +1399,32 @@
       <div class="solution-layout">
         <div class="solution-col solution-col--issue">
           <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">
-            診療科ごとに情報の<br>
-            見せ方が異なると<br>
-            情報を探しづらい。<br>
-            また、更新のたびに<br>
-            外部依頼が必要な状況。
-          </p>
+          <p class="solution-col__text">診療科ごとに情報の<br>見せ方が異なると<br>情報を探しづらい。<br>また、更新のたびに<br>外部依頼が必要な状況。</p>
         </div>
         <div class="solution-col solution-col--plan">
           <h3 class="solution-col__heading">施策</h3>
           <ul class="solution-col__list">
-            <li>診療科テンプレートの統一<br>（内容/症状/特徴/担当医/受診の流れ）</li>
-            <li>医師紹介の充実<br>（想い・関わり方・エピソード）</li>
-            <li>CMS導入（お知らせ/募集要項/外来担当医）</li>
+            <li><span class="list-marker"></span><span>診療科テンプレートの統一<br>（内容/症状/特徴/担当医/受診の流れ）</span></li>
+            <li><span class="list-marker"></span><span>医師紹介の充実<br>（想い・関わり方・エピソード）</span></li>
+            <li><span class="list-marker"></span><span>CMS導入（お知らせ/募集要項/外来担当医）</span></li>
           </ul>
           <div class="solution-col__plus">
             <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
             <ul class="solution-col__list">
-              <li>FAQ蓄積・更新の仕組み</li>
-              <li>外来担当医のCMS管理</li>
+              <li><span class="list-marker"></span><span>FAQ蓄積・更新の仕組み</span></li>
+              <li><span class="list-marker"></span><span>外来担当医のCMS管理</span></li>
             </ul>
           </div>
         </div>
         <div class="solution-col solution-col--effect">
           <h3 class="solution-col__heading">効果</h3>
           <ul class="solution-col__effect-list">
-            <li>情報の探しやすさ向上</li>
-            <li>迅速な情報更新</li>
-            <li>運用負担の軽減</li>
+            <li><span class="list-dot"></span><span>情報の探しやすさ向上</span></li>
+            <li><span class="list-dot"></span><span>迅速な情報更新</span></li>
+            <li><span class="list-dot"></span><span>運用負担の軽減</span></li>
           </ul>
           <div class="solution-col__cost">
-            <p class="solution-col__cost-text">
-              年間80万円 &rarr; 30〜40万円
-            </p>
+            <p class="solution-col__cost-text">年間80万円 &rarr; 30〜40万円</p>
           </div>
         </div>
       </div>
@@ -918,32 +1442,18 @@
       <div class="anniversary-layout">
         <div class="anniversary-block">
           <h3 class="anniversary-block__title">地域との歩みの可視化</h3>
-          <p class="anniversary-block__text">
-            病院の出来事と地域の出来事を並べた年表。<br>
-            「あの時お世話になったな」という記憶が蘇り、<br>
-            地域の方が自分ごととして感じられる構成に。
-          </p>
+          <p class="anniversary-block__text">病院の出来事と地域の出来事を並べた年表。<br>「あの時お世話になったな」という記憶が蘇り、<br>地域の方が自分ごととして感じられる構成に。</p>
         </div>
         <div class="anniversary-block">
           <h3 class="anniversary-block__title">患者さまへの感謝</h3>
-          <p class="anniversary-block__text">
-            支えてくださった患者さまや地域の方々への<br>
-            感謝を伝えるコンテンツ設計。<br>
-            一般の方にも伝わる内容に整理。
-          </p>
+          <p class="anniversary-block__text">支えてくださった患者さまや地域の方々への<br>感謝を伝えるコンテンツ設計。<br>一般の方にも伝わる内容に整理。</p>
         </div>
         <div class="anniversary-block">
           <h3 class="anniversary-block__title">未来を語る</h3>
-          <p class="anniversary-block__text">
-            過去を語るだけで終わらせず、<br>
-            院長・スタッフの言葉で未来を見せる。<br>
-            これからの関係性を深める機会として活用。
-          </p>
+          <p class="anniversary-block__text">過去を語るだけで終わらせず、<br>院長・スタッフの言葉で未来を見せる。<br>これからの関係性を深める機会として活用。</p>
         </div>
       </div>
-      <p class="slide__note">
-        単なる記念ページではなく、貴院の「これまで」と「これから」をより知っていただくためのページです。
-      </p>
+      <p class="slide__note">単なる記念ページではなく、貴院の「これまで」と「これから」をより知っていただくためのページです。</p>
     </div>
   </section>
 
@@ -975,30 +1485,15 @@
       <div class="three-col">
         <div class="feature-block">
           <h3 class="feature-block__title">サーバー・保守</h3>
-          <p class="feature-block__text">
-            <!-- 詳細は後日記入 -->
-            サーバー管理、SSL対応、<br>
-            セキュリティアップデート、<br>
-            バックアップ体制の整備。
-          </p>
+          <p class="feature-block__text">サーバー管理、SSL対応、<br>セキュリティアップデート、<br>バックアップ体制の整備。</p>
         </div>
         <div class="feature-block">
           <h3 class="feature-block__title">CMS運用サポート</h3>
-          <p class="feature-block__text">
-            <!-- 詳細は後日記入 -->
-            操作マニュアルの整備、<br>
-            初期レクチャーの実施、<br>
-            運用中のQA対応。
-          </p>
+          <p class="feature-block__text">操作マニュアルの整備、<br>初期レクチャーの実施、<br>運用中のQA対応。</p>
         </div>
         <div class="feature-block">
           <h3 class="feature-block__title">アナリティクス</h3>
-          <p class="feature-block__text">
-            <!-- 詳細は後日記入 -->
-            GA4の導入と初期設定、<br>
-            月次レポートの提供、<br>
-            改善提案（オプション）。
-          </p>
+          <p class="feature-block__text">GA4の導入と初期設定、<br>月次レポートの提供、<br>改善提案（オプション）。</p>
         </div>
       </div>
     </div>
@@ -1021,7 +1516,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- 費用項目は後日差し替え -->
             <tr>
               <td class="cost-table__td">企画・設計</td>
               <td class="cost-table__td">要件定義、情報設計、ワイヤーフレーム</td>
@@ -1068,40 +1562,29 @@
       <p class="section-label">07 &mdash; 実現に向けて</p>
       <h2 class="slide__title">スケジュール</h2>
       <div class="schedule">
-        <!-- スケジュール項目は後日差し替え -->
         <div class="schedule__row">
           <div class="schedule__phase">企画・設計</div>
-          <div class="schedule__bar-area">
-            <div class="schedule__bar schedule__bar--1"></div>
-          </div>
+          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--1"></div></div>
           <div class="schedule__period">Month 1-2</div>
         </div>
         <div class="schedule__row">
           <div class="schedule__phase">デザイン</div>
-          <div class="schedule__bar-area">
-            <div class="schedule__bar schedule__bar--2"></div>
-          </div>
+          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--2"></div></div>
           <div class="schedule__period">Month 2-3</div>
         </div>
         <div class="schedule__row">
           <div class="schedule__phase">コーディング・CMS構築</div>
-          <div class="schedule__bar-area">
-            <div class="schedule__bar schedule__bar--3"></div>
-          </div>
+          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--3"></div></div>
           <div class="schedule__period">Month 3-5</div>
         </div>
         <div class="schedule__row">
           <div class="schedule__phase">テスト・修正</div>
-          <div class="schedule__bar-area">
-            <div class="schedule__bar schedule__bar--4"></div>
-          </div>
+          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--4"></div></div>
           <div class="schedule__period">Month 5-6</div>
         </div>
         <div class="schedule__row">
           <div class="schedule__phase">公開・運用開始</div>
-          <div class="schedule__bar-area">
-            <div class="schedule__bar schedule__bar--5"></div>
-          </div>
+          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--5"></div></div>
           <div class="schedule__period">Month 6</div>
         </div>
       </div>
@@ -1118,38 +1601,25 @@
       <h2 class="slide__title">チーム体制</h2>
       <p class="slide__lead">ワンチームで、最後まで責任を持って伴走します。</p>
       <div class="team-layout">
-        <!-- チームメンバーは後日差し替え -->
         <div class="team-member">
           <div class="team-member__role">プロジェクトマネージャー</div>
           <div class="team-member__name">担当者名</div>
-          <p class="team-member__desc">
-            全体の進行管理・品質管理を担当。<br>
-            ご要望の窓口として対応します。
-          </p>
+          <p class="team-member__desc">全体の進行管理・品質管理を担当。<br>ご要望の窓口として対応します。</p>
         </div>
         <div class="team-member">
           <div class="team-member__role">ディレクター</div>
           <div class="team-member__name">担当者名</div>
-          <p class="team-member__desc">
-            企画・設計・情報整理を担当。<br>
-            コンテンツの構成と導線設計を行います。
-          </p>
+          <p class="team-member__desc">企画・設計・情報整理を担当。<br>コンテンツの構成と導線設計を行います。</p>
         </div>
         <div class="team-member">
           <div class="team-member__role">デザイナー</div>
           <div class="team-member__name">担当者名</div>
-          <p class="team-member__desc">
-            UIデザイン・ビジュアル設計を担当。<br>
-            ブランディングの視覚化を行います。
-          </p>
+          <p class="team-member__desc">UIデザイン・ビジュアル設計を担当。<br>ブランディングの視覚化を行います。</p>
         </div>
         <div class="team-member">
           <div class="team-member__role">エンジニア</div>
           <div class="team-member__name">担当者名</div>
-          <p class="team-member__desc">
-            実装・CMS構築・テストを担当。<br>
-            パフォーマンスとアクセシビリティを担保します。
-          </p>
+          <p class="team-member__desc">実装・CMS構築・テストを担当。<br>パフォーマンスとアクセシビリティを担保します。</p>
         </div>
       </div>
     </div>
@@ -1178,17 +1648,5 @@
 
 </div>
 
-<!-- スライドナビゲーション -->
-<div class="slide-nav" id="slideNav">
-  <button class="slide-nav__btn" id="prevBtn" aria-label="前のスライド">&larr;</button>
-  <span class="slide-nav__counter">
-    <span id="currentSlide">1</span>
-    <span class="slide-nav__sep">/</span>
-    <span id="totalSlides">31</span>
-  </span>
-  <button class="slide-nav__btn" id="nextBtn" aria-label="次のスライド">&rarr;</button>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
