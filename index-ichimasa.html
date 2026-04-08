@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ichimasa担当スライド — 小倉大学病院様 ご提案資料</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & BASE（index.htmlと同一）
+       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: #1E293B;
+      background: #E5E5E5;
+      line-height: 1.7;
+    }
+    ul, ol { list-style: none; }
+    strong { font-weight: 700; }
+    table { border-collapse: collapse; }
+
+    /* ========================================
+       SLIDES WRAPPER
+       ======================================== */
+    .slides-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 0 120px;
+    }
+
+    /* ========================================
+       SLIDE BASE
+       ======================================== */
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    }
+    .slide__inner {
+      width: 100%;
+      height: 100%;
+      padding: 80px 100px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========================================
+       COMMON ELEMENTS
+       ======================================== */
+    .section-label {
+      font-size: 23px;
+      font-weight: 700;
+      color: #10B981;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+      padding-left: 16px;
+      border-left: 4px solid #A7F3D0;
+    }
+    .slide__title {
+      font-size: 40px;
+      font-weight: 700;
+      color: #10B981;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .slide__lead {
+      font-size: 25px;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .slide__note {
+      font-size: 23px;
+      color: #64748B;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    /* ========================================
+       LIST MARKERS
+       ======================================== */
+    .list-marker {
+      display: block; width: 8px; height: 2px;
+      background: #10B981; margin-top: 20px; flex-shrink: 0;
+    }
+
+    /* ========================================
+       COMPONENT: Three Column + Feature Block
+       ======================================== */
+    .three-col { display: flex; gap: 32px; flex: 1; }
+
+    .feature-block {
+      flex: 1; padding: 32px; background: #F8FAFC;
+      border-radius: 8px; border-top: 3px solid #10B981;
+      display: flex; flex-direction: column;
+    }
+    .feature-block__title {
+      font-size: 27px; font-weight: 700;
+      color: #0F172A; margin-bottom: 8px;
+    }
+    .feature-block__text { font-size: 25px; color: #475569; line-height: 1.9; }
+
+    /* --- ichimasa拡張: サポート体制用 --- */
+    .feature-block__subtitle {
+      display: inline-block;
+      width: fit-content;
+      font-size: 20px;
+      font-weight: 700;
+      color: #10B981;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      padding: 5px 18px;
+      background: #ECFDF5;
+      border-radius: 4px;
+    }
+    .feature-block__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+    .feature-block__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 25px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .feature-block__note {
+      margin-top: auto;
+      padding-top: 24px;
+      border-top: 1px solid #E2E8F0;
+      font-size: 20px;
+      font-weight: 500;
+      color: #059669;
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       COMPONENT: Gantt Table
+       ======================================== */
+    .gantt-area { padding: 12px 0 0; flex: 1; }
+    .gantt { width: 100%; border-collapse: collapse; }
+    .gantt th, .gantt td { text-align: center; vertical-align: middle; }
+    .gantt-months th {
+      font-size: 23px; font-weight: 700; padding: 16px 0 12px;
+      color: #0F172A; border-bottom: 2px solid #E2E8F0;
+    }
+    .gantt-months th:first-child {
+      text-align: left; width: 300px; min-width: 300px;
+      font-size: 14px; color: #64748B; font-weight: 400; letter-spacing: 0.1em;
+    }
+    .gantt-months th:not(:first-child) { width: calc((100% - 300px) / 6); }
+    .gantt-phase td {
+      padding: 0; height: 50px; position: relative;
+    }
+    .gantt-phase td:first-child {
+      text-align: left; padding: 4px 16px 4px 0;
+      font-size: 21px; font-weight: 500; color: #0F172A;
+      vertical-align: middle;
+    }
+    .gantt-bar {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      height: 28px; border-radius: 4px;
+      background: linear-gradient(135deg, #A7F3D0, #7DD3FC);
+    }
+
+    /* ========================================
+       LOGO
+       ======================================== */
+    .slide__logo {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      width: 140px;
+      height: auto;
+      z-index: 2;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="slides-wrapper">
+
+  <!-- ============================================
+       S27: 公開後のサポート体制（差し替え）
+       ============================================ -->
+  <section class="slide slide--content" id="slide-27">
+    <div class="slide__inner">
+      <p class="section-label">07 &mdash; プロジェクトの進め方</p>
+      <h2 class="slide__title">公開後の安心体制</h2>
+      <p class="slide__lead">サイトの状況把握・トラブル対応・日常の保守まで、公開後もお任せいただける体制です。</p>
+      <div class="three-col">
+
+        <!-- 柱1: サイトの状況がわかる -->
+        <div class="feature-block">
+          <h3 class="feature-block__title">サイトの状況がわかる</h3>
+          <p class="feature-block__subtitle">毎月 ＋ 3ヶ月に1回</p>
+          <ul class="feature-block__list">
+            <li><span class="list-marker"></span><span>毎月のアクセス状況を<br>A4一枚でご報告</span></li>
+            <li><span class="list-marker"></span><span>3ヶ月ごとに紹介件数等も<br>合わせた総合レポート</span></li>
+            <li><span class="list-marker"></span><span>どなたにもそのままお渡しできる<br>わかりやすい形でお届け</span></li>
+          </ul>
+          <p class="feature-block__note">レポートは自動作成。<br>病院側の作業負担はありません。</p>
+        </div>
+
+        <!-- 柱2: 困ったときに頼れる -->
+        <div class="feature-block">
+          <h3 class="feature-block__title">困ったときに頼れる</h3>
+          <p class="feature-block__subtitle">随時対応</p>
+          <ul class="feature-block__list">
+            <li><span class="list-marker"></span><span>サイトの不具合・表示崩れに<br>迅速対応</span></li>
+            <li><span class="list-marker"></span><span>お知らせ更新・情報変更など<br>CMS操作のご相談</span></li>
+            <li><span class="list-marker"></span><span>操作マニュアル＋<br>初期レクチャーもご用意</span></li>
+          </ul>
+          <p class="feature-block__note">「どうすればいい？」を<br>気軽に聞ける窓口があります。</p>
+        </div>
+
+        <!-- 柱3: 任せておける -->
+        <div class="feature-block">
+          <h3 class="feature-block__title">任せておける</h3>
+          <p class="feature-block__subtitle">定期メンテナンス</p>
+          <ul class="feature-block__list">
+            <li><span class="list-marker"></span><span>システムの更新・<br>セキュリティ対策を定期実施</span></li>
+            <li><span class="list-marker"></span><span>万が一に備えた<br>バックアップ体制</span></li>
+            <li><span class="list-marker"></span><span>SSL証明書・サーバーの管理</span></li>
+          </ul>
+          <p class="feature-block__note">技術的なことは<br>全てお任せいただけます。</p>
+        </div>
+
+      </div>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>
+
+
+  <!-- ============================================
+       S29: スケジュール（テキスト差し替え）
+       ============================================ -->
+  <section class="slide slide--content" id="slide-29">
+    <div class="slide__inner">
+      <p class="section-label">07 &mdash; プロジェクトの進め方</p>
+      <h2 class="slide__title">スケジュール</h2>
+      <p class="slide__lead" style="margin-bottom: 24px;">2026年5月キックオフ、10月のサイト公開を目指します。</p>
+
+      <div class="gantt-area">
+        <table class="gantt">
+          <tr class="gantt-months">
+            <th></th>
+            <th>5月</th>
+            <th>6月</th>
+            <th>7月</th>
+            <th>8月</th>
+            <th>9月</th>
+            <th>10月</th>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>キックオフ・要件定義</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:0%; width:22%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>デザイン制作</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:11%; width:28%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>コーディング・CMS構築</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:28%; width:39%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>コンテンツ入稿・撮影</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:22%; width:39%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>採用サイト制作</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:44%; width:28%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>テスト・検証</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:67%; width:22%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>公開後サポート</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-bar" style="left:83%; width:17%;"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 下部の補足 -->
+      <div style="display: flex; gap: 32px; margin-top: auto; padding-top: 20px;">
+        <div style="flex: 1; padding: 18px 24px; background: #F8FAFC; border-left: 3px solid #10B981; border-radius: 8px;">
+          <p style="font-size: 20px; font-weight: 700; color: #0F172A; margin-bottom: 10px;">進め方について</p>
+          <ul style="font-size: 17px; color: #475569; line-height: 1.8; list-style: disc; padding-left: 20px;">
+            <li>各フェーズの節目で<strong>確認の場を設けながら</strong>進行します</li>
+            <li>デザイン確定後に開発着手し、<strong>手戻りを最小限に</strong></li>
+            <li>公開後も<strong>運用サポート体制</strong>をご用意しています</li>
+          </ul>
+        </div>
+        <div style="flex: 1; padding: 18px 24px; background: #F8FAFC; border-left: 3px solid #A7F3D0; border-radius: 8px;">
+          <p style="font-size: 20px; font-weight: 700; color: #0F172A; margin-bottom: 10px;">ご協力いただく場面</p>
+          <ul style="font-size: 17px; color: #475569; line-height: 1.8; list-style: disc; padding-left: 20px;">
+            <li>撮影・インタビューの<strong>日程調整</strong></li>
+            <li>既存素材（写真・パンフレット等）の<strong>ご共有</strong></li>
+            <li>公開前の<strong>最終チェック</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="slide__note">※ スケジュールは目安です。ご要望に応じて調整いたします。</p>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>
+
+</div>
+
+</body>
+</html>
