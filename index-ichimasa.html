@@ -170,6 +170,11 @@
       font-size: 21px; font-weight: 500; color: #0F172A;
       vertical-align: middle;
     }
+    .gantt-track {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      left: 0; right: 0; height: 28px;
+      background: #F1F5F9; border-radius: 4px;
+    }
     .gantt-bar {
       position: absolute; top: 50%; transform: translateY(-50%);
       height: 28px; border-radius: 4px;
@@ -270,6 +275,7 @@
           <tr class="gantt-phase">
             <td>キックオフ・要件定義</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:0%; width:22%;"></div>
             </td>
           </tr>
@@ -277,6 +283,7 @@
           <tr class="gantt-phase">
             <td>デザイン制作</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:11%; width:28%;"></div>
             </td>
           </tr>
@@ -284,6 +291,7 @@
           <tr class="gantt-phase">
             <td>コーディング・CMS構築</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:28%; width:39%;"></div>
             </td>
           </tr>
@@ -291,6 +299,7 @@
           <tr class="gantt-phase">
             <td>コンテンツ入稿・撮影</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:22%; width:39%;"></div>
             </td>
           </tr>
@@ -298,6 +307,7 @@
           <tr class="gantt-phase">
             <td>採用サイト制作</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:44%; width:28%;"></div>
             </td>
           </tr>
@@ -305,6 +315,7 @@
           <tr class="gantt-phase">
             <td>テスト・検証</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:67%; width:22%;"></div>
             </td>
           </tr>
@@ -312,6 +323,7 @@
           <tr class="gantt-phase">
             <td>公開後サポート</td>
             <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
               <div class="gantt-bar" style="left:83%; width:17%;"></div>
             </td>
           </tr>

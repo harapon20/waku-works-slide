@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=960">
+  <title>レポートサンプル（月次・四半期）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background: #E5E5E5;
+      color: #1E293B;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    :root {
+      --primary: #10B981;
+      --primary-dark: #059669;
+      --primary-light: #A7F3D0;
+      --primary-pale: #ECFDF5;
+      --text: #0F172A;
+      --text-body: #1E293B;
+      --text-sub: #64748B;
+      --text-muted: #94A3B8;
+      --bg: #FFFFFF;
+      --bg-subtle: #F8FAFC;
+      --border: #E2E8F0;
+      --border-light: #F1F5F9;
+      --green: #059669;
+      --red: #DC2626;
+      --gradient: linear-gradient(135deg, #A7F3D0, #7DD3FC);
+    }
+
+    .report {
+      width: 794px;
+      min-height: 1123px;
+      margin: 40px auto;
+      background: var(--bg);
+      padding: 44px 48px 36px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .report + .report { margin-top: 20px; }
+
+    .r-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 14px;
+      border-bottom: 3px solid var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .r-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .r-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--bg);
+      background: var(--primary);
+      padding: 3px 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
+
+    .r-badge--q { background: var(--primary-dark); }
+
+    .r-date { text-align: right; line-height: 1.5; }
+    .r-date-main { font-size: 15px; font-weight: 900; color: var(--text); }
+    .r-date-sub { font-size: 10px; color: var(--text-sub); }
+
+    .r-summary {
+      padding: 12px 16px;
+      background: var(--primary-pale);
+      border-left: 3px solid var(--primary);
+      color: var(--text-body);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .r-summary b { font-weight: 700; color: var(--primary-dark); }
+
+    .r-section { margin-bottom: 18px; }
+
+    .r-section-title {
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .r-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .r-num-card {
+      padding: 14px 16px;
+      background: var(--bg-subtle);
+      border-top: 3px solid var(--primary);
+      border-radius: 4px;
+    }
+
+    .r-num-label { font-size: 10px; color: var(--text-sub); margin-bottom: 4px; }
+
+    .r-num-value {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .r-num-unit { font-size: 11px; font-weight: 400; color: var(--text-sub); margin-left: 2px; }
+    .r-num-change { font-size: 11px; font-weight: 700; margin-top: 6px; }
+    .r-num-target { font-size: 9px; color: var(--text-sub); margin-top: 2px; }
+
+    .c-up { color: var(--green); }
+    .c-down { color: var(--red); }
+
+    .r-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .r-box {
+      padding: 14px 16px;
+      background: var(--bg-subtle);
+      border-radius: 4px;
+    }
+
+    .r-box-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+
+    .r-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .r-table th {
+      text-align: left;
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--text-sub);
+      padding: 3px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .r-table th:nth-child(2),
+    .r-table th:nth-child(3),
+    .r-table th:nth-child(4) { text-align: right; }
+
+    .r-table td {
+      font-size: 11px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-body);
+    }
+
+    .r-table td:first-child { font-weight: 700; color: var(--text); }
+
+    .r-table td:nth-child(2),
+    .r-table td:nth-child(3),
+    .r-table td:nth-child(4) { text-align: right; }
+
+    .r-table .val {
+      font-weight: 900;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .r-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .r-bar-label { font-size: 10px; font-weight: 700; color: var(--text); width: 72px; flex-shrink: 0; }
+    .r-bar-track { flex: 1; height: 12px; background: var(--border); border-radius: 2px; }
+    .r-bar-fill { height: 100%; background: var(--gradient); border-radius: 2px; }
+    .r-bar-val { font-size: 10px; font-weight: 700; color: var(--text); width: 40px; text-align: right; flex-shrink: 0; }
+
+    .r-insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .r-insight {
+      padding: 10px 12px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .r-insight--alert { border-left-color: var(--red); }
+
+    .r-insight-label { font-size: 9px; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
+    .r-insight--alert .r-insight-label { color: var(--red); }
+    .r-insight-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .r-insight-text { font-size: 10px; color: var(--text-sub); line-height: 1.6; }
+
+    .r-comment {
+      margin-top: auto;
+      padding: 10px 16px;
+      background: var(--primary-pale);
+      border-left: 3px solid var(--primary);
+      color: var(--text-body);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .r-comment b { font-weight: 700; color: var(--primary-dark); }
+
+    .r-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+
+    .r-note { font-size: 9px; color: var(--text-sub); margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- ==========================================
+     月次レポート
+     ========================================== -->
+<div class="report">
+
+  <div class="r-header">
+    <div class="r-title">小倉大学病院 WEBサイト レポート <span class="r-badge">MONTHLY</span></div>
+    <div class="r-date">
+      <div class="r-date-main">2026年11月</div>
+      <div class="r-date-sub">公開後1ヶ月目</div>
+    </div>
+  </div>
+
+  <div class="r-summary">
+    アクセス数は旧サイトの<b>約1.8倍</b>に増加。スマホからの閲覧が<b>7割を超え</b>、狙い通りの利用動向です。整形外科・リハビリ科ページへの流入が好調です。
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">アクセス概要</div>
+    <div class="r-numbers">
+      <div class="r-num-card">
+        <div class="r-num-label">サイト訪問者数</div>
+        <div class="r-num-value">14,200</div>
+        <div class="r-num-change c-up">+82%（旧サイト比）</div>
+      </div>
+      <div class="r-num-card">
+        <div class="r-num-label">スマホからの閲覧</div>
+        <div class="r-num-value">72<span class="r-num-unit">%</span></div>
+        <div class="r-num-change c-up">+12pt（旧: 60%）</div>
+      </div>
+      <div class="r-num-card">
+        <div class="r-num-label">すぐ離れる人の割合</div>
+        <div class="r-num-value">48<span class="r-num-unit">%</span></div>
+        <div class="r-num-change c-up">−24pt 改善（旧: 72%）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">サイトの利用状況</div>
+    <div class="r-cols">
+      <div class="r-box">
+        <div class="r-box-title">主な指標</div>
+        <table class="r-table">
+          <tr><th>指標</th><th>今月</th><th>前月比</th></tr>
+          <tr><td>ページ閲覧数</td><td class="val">45,400</td><td class="c-up">+94%</td></tr>
+          <tr><td>1人あたりの閲覧ページ数</td><td class="val">3.2</td><td class="c-up">+1.4</td></tr>
+          <tr><td>平均滞在時間</td><td class="val">2分18秒</td><td class="c-up">+52秒</td></tr>
+          <tr><td>フォーム送信数</td><td class="val">24</td><td class="c-up">新規</td></tr>
+          <tr><td>電話タップ数</td><td class="val">186</td><td>—</td></tr>
+        </table>
+      </div>
+      <div class="r-box">
+        <div class="r-box-title">よく見られているページ</div>
+        <div class="r-bar"><div class="r-bar-label">トップ</div><div class="r-bar-track"><div class="r-bar-fill" style="width:100%;"></div></div><div class="r-bar-val">4,820</div></div>
+        <div class="r-bar"><div class="r-bar-label">整形外科</div><div class="r-bar-track"><div class="r-bar-fill" style="width:52%;"></div></div><div class="r-bar-val">2,510</div></div>
+        <div class="r-bar"><div class="r-bar-label">リハビリ科</div><div class="r-bar-track"><div class="r-bar-fill" style="width:38%;"></div></div><div class="r-bar-val">1,830</div></div>
+        <div class="r-bar"><div class="r-bar-label">初めての方へ</div><div class="r-bar-track"><div class="r-bar-fill" style="width:31%;"></div></div><div class="r-bar-val">1,490</div></div>
+        <div class="r-bar"><div class="r-bar-label">地域連携</div><div class="r-bar-track"><div class="r-bar-fill" style="width:25%;"></div></div><div class="r-bar-val">1,200</div></div>
+        <div class="r-bar"><div class="r-bar-label">採用情報</div><div class="r-bar-track"><div class="r-bar-fill" style="width:18%;"></div></div><div class="r-bar-val">870</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">今月のトピック</div>
+    <div class="r-insights">
+      <div class="r-insight">
+        <div class="r-insight-label">注目</div>
+        <div class="r-insight-title">整形外科ページが人気</div>
+        <div class="r-insight-text">「小倉 整形外科」で上位表示。リハビリ科への遷移も多く、一貫体制の訴求が届いています。</div>
+      </div>
+      <div class="r-insight">
+        <div class="r-insight-label">注目</div>
+        <div class="r-insight-title">FAQ閲覧が好調</div>
+        <div class="r-insight-text">「診療時間」「持ち物」のFAQがよく読まれています。電話問い合わせの軽減にもつながりそうです。</div>
+      </div>
+      <div class="r-insight r-insight--alert">
+        <div class="r-insight-label">気になる点</div>
+        <div class="r-insight-title">採用ページの離脱が多め</div>
+        <div class="r-insight-text">募集要項で離脱する傾向が見られます。内容の見せ方に改善の余地がありそうです。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-comment">
+    <b>担当より</b> — 公開1ヶ月としては順調な滑り出しです。気になる点がございましたら、お気軽にご連絡ください。
+  </div>
+
+  <div class="r-footer">
+    <div>小倉大学病院 WEBサイト 月次レポート</div>
+    <div>次回の四半期レポート：2027年1月</div>
+  </div>
+</div>
+
+
+<!-- ==========================================
+     四半期レポート
+     ========================================== -->
+<div class="report">
+
+  <div class="r-header">
+    <div class="r-title">小倉大学病院 WEBサイト レポート <span class="r-badge r-badge--q">QUARTERLY</span></div>
+    <div class="r-date">
+      <div class="r-date-main">2027年1月</div>
+      <div class="r-date-sub">公開後3ヶ月（10月〜12月）</div>
+    </div>
+  </div>
+
+  <div class="r-summary">
+    公開から3ヶ月が経過。アクセス数は安定して旧サイトの<b>2倍以上</b>を維持しています。地域連携ページ・採用ページともに閲覧数が伸びており、サイトの利用は順調に推移しています。
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">目標への進捗（3ヶ月累計）</div>
+    <div class="r-numbers">
+      <div class="r-num-card">
+        <div class="r-num-label">HP経由の看護師応募</div>
+        <div class="r-num-value">8<span class="r-num-unit">件 / 3ヶ月</span></div>
+        <div class="r-num-change c-up">旧サイト: 0件 → 大幅改善</div>
+        <div class="r-num-target">年間目標 30件 → 達成ペース107%</div>
+      </div>
+      <div class="r-num-card">
+        <div class="r-num-label">地域連携の新規紹介</div>
+        <div class="r-num-value">43<span class="r-num-unit">件 / 月平均</span></div>
+        <div class="r-num-change c-up">+11件（公開前: 32件）</div>
+        <div class="r-num-target">月間目標 50件 → 達成率86%</div>
+      </div>
+      <div class="r-num-card">
+        <div class="r-num-label">電話でのお問い合わせ</div>
+        <div class="r-num-value">75<span class="r-num-unit">件 / 日平均</span></div>
+        <div class="r-num-change c-down">−25件（旧: 100件超）</div>
+        <div class="r-num-target">目標 30%削減 → 現在25%削減</div>
+      </div>
+    </div>
+    <div class="r-note">※ 紹介件数・電話件数は病院様にお伺いしたデータに基づきます</div>
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">アクセス推移（3ヶ月）</div>
+    <div class="r-cols">
+      <div class="r-box">
+        <div class="r-box-title">月別推移</div>
+        <table class="r-table">
+          <tr><th>指標</th><th>10月</th><th>11月</th><th>12月</th></tr>
+          <tr><td>訪問者数</td><td>14,200</td><td>15,800</td><td class="val">16,400</td></tr>
+          <tr><td>スマホ比率</td><td>72%</td><td>73%</td><td class="val">74%</td></tr>
+          <tr><td>直帰率</td><td>48%</td><td>45%</td><td class="val">43%</td></tr>
+          <tr><td>フォーム送信</td><td>24</td><td>31</td><td class="val">38</td></tr>
+        </table>
+      </div>
+      <div class="r-box">
+        <div class="r-box-title">検索流入が増えたキーワード</div>
+        <table class="r-table">
+          <tr><th>キーワード</th><th>表示回数</th><th>順位</th></tr>
+          <tr><td>小倉 整形外科</td><td class="val">3,200</td><td class="c-up">4位</td></tr>
+          <tr><td>北九州 リハビリ</td><td class="val">1,800</td><td class="c-up">6位</td></tr>
+          <tr><td>小倉大学病院</td><td class="val">4,100</td><td class="c-up">1位</td></tr>
+          <tr><td>小倉 内視鏡</td><td>890</td><td>12位</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">3ヶ月のトピック</div>
+    <div class="r-insights">
+      <div class="r-insight">
+        <div class="r-insight-label">注目</div>
+        <div class="r-insight-title">スマホ体験が大幅改善</div>
+        <div class="r-insight-text">直帰率72%→43%に。モバイルファースト設計とFAQ充実が効果を発揮しています。</div>
+      </div>
+      <div class="r-insight">
+        <div class="r-insight-label">注目</div>
+        <div class="r-insight-title">採用応募がゼロから8件に</div>
+        <div class="r-insight-text">自院サイト経由の応募が定着しつつあります。</div>
+      </div>
+      <div class="r-insight r-insight--alert">
+        <div class="r-insight-label">気になる点</div>
+        <div class="r-insight-title">連携紹介あと7件で目標</div>
+        <div class="r-insight-text">月50件の目標まであと少しです。地域連携ページの閲覧は順調に伸びています。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-comment">
+    <b>担当より</b> — 3ヶ月間で主要な数値はすべて改善傾向にあります。引き続きサイトの安定運用をサポートしてまいります。気になる点がございましたら、お気軽にご連絡ください。
+  </div>
+
+  <div class="r-footer">
+    <div>小倉大学病院 WEBサイト 四半期レポート</div>
+    <div>次回の四半期レポート：2027年4月</div>
+  </div>
+</div>
+
+</body>
+</html>
