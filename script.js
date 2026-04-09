@@ -5,7 +5,7 @@
  * - ビューポートに合わせてスライドを縮小表示
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.initSlides = function() {
   const slides = document.querySelectorAll('.slide');
   const currentEl = document.getElementById('currentSlide');
   const totalEl = document.getElementById('totalSlides');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
 
   // スライド総数を表示
-  totalEl.textContent = slides.length;
+  if (totalEl) totalEl.textContent = slides.length;
 
   // ビューポートに合わせてスケール調整
   function updateScale() {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (index < 0 || index >= slides.length) return;
     currentIndex = index;
     slides[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    currentEl.textContent = currentIndex + 1;
+    if (currentEl) currentEl.textContent = currentIndex + 1;
   }
 
   // スクロール位置から現在のスライドを検出
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (closest !== currentIndex) {
       currentIndex = closest;
-      currentEl.textContent = currentIndex + 1;
+      if (currentEl) currentEl.textContent = currentIndex + 1;
     }
   }
 
@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ボタンナビゲーション
-  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
 
   // スクロール検出（throttle付き）
   let scrollTimer;
@@ -85,4 +85,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初期化
   updateScale();
   detectCurrentSlide();
-});
+};

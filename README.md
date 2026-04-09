@@ -4,11 +4,17 @@
 
 ## セットアップ
 
-ビルド不要。`index.html` をブラウザで直接開くだけで確認できます。
+スライドは `fetch()` で動的に読み込むため、**ローカルサーバーが必要**です（`file://` ではCORSエラーになります）。
 
+```bash
+# Python の場合
+python3 -m http.server 8080
+
+# VS Code の場合
+# Live Server 拡張機能で index.html を開く
 ```
-open index.html
-```
+
+`http://localhost:8080` にアクセスして確認してください。
 
 ## 操作方法
 
@@ -20,14 +26,30 @@ open index.html
 
 ```
 /
-├── index.html    ... 全31枚のスライド
-├── style.css     ... スタイル（CSS変数でデザインシステム管理）
-├── script.js     ... スライドナビゲーション
-├── README.md     ... このファイル
-└── assets/
-    ├── images/   ... 画像素材（必要に応じて追加）
-    └── icons/    ... アイコン素材（必要に応じて追加）
+├── index.html        ... CSS + スライドローダー（本体）
+├── style.css         ... スタイル（CSS変数でデザインシステム管理）
+├── script.js         ... スライドナビゲーション（initSlides()）
+├── ロゴ.png          ... waku & works ロゴ
+├── README.md         ... このファイル
+└── slides/
+    ├── slide-01.html ... 表紙
+    ├── slide-02.html ... 目次
+    ├── ...
+    └── slide-31.html ... クロージング
 ```
+
+### 仕組み
+
+- 各スライドは `slides/slide-XX.html` に `<section>` タグのみで格納
+- `index.html` 内のローダースクリプトが `fetch()` で全31ファイルを並列読み込み
+- 読み込み完了後に `initSlides()`（script.js）を呼び出してナビゲーションを初期化
+- CSSは `index.html` の `<style>` タグ内に集約
+
+### 編集方法
+
+- **スライド内容の編集**: `slides/slide-XX.html` を直接編集（担当者ごとに分担可能）
+- **スタイルの変更**: `index.html` 内の `<style>` タグを編集
+- **スライドの順序変更・追加・削除**: `index.html` 内の `slideFiles` 配列を編集
 
 ## テキスト差し替え箇所
 
