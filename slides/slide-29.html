@@ -1,35 +1,198 @@
+<style>
+  /* S29: スケジュール（ガントチャート） */
+  .gantt-area {
+    padding: 12px 0 0;
+    flex: 1;
+  }
+  .gantt {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .gantt th,
+  .gantt td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .gantt-months th {
+    font-size: 23px;
+    font-weight: 700;
+    padding: 16px 0 12px;
+    color: #0F172A;
+    border-bottom: 2px solid #E2E8F0;
+  }
+  .gantt-months th:first-child {
+    text-align: left;
+    width: 300px;
+    min-width: 300px;
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
+  .gantt-months th:not(:first-child) {
+    width: calc((100% - 300px) / 6);
+  }
+  .gantt-phase td {
+    padding: 0;
+    height: 50px;
+    position: relative;
+  }
+  .gantt-phase td:first-child {
+    text-align: left;
+    padding: 4px 16px 4px 0;
+    font-size: 21px;
+    font-weight: 500;
+    color: #0F172A;
+    vertical-align: middle;
+  }
+  .gantt-track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #F1F5F9;
+    border-radius: 4px;
+  }
+  .gantt-bar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 28px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #A7F3D0, #7DD3FC);
+  }
+  .schedule-notes {
+    display: flex;
+    gap: 32px;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  .schedule-notes__block {
+    flex: 1;
+    padding: 18px 24px;
+    background: #F8FAFC;
+    border-radius: 8px;
+  }
+  .schedule-notes__block--primary {
+    border-left: 3px solid #10B981;
+  }
+  .schedule-notes__block--secondary {
+    border-left: 3px solid #A7F3D0;
+  }
+  .schedule-notes__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 10px;
+  }
+  .schedule-notes__list {
+    font-size: 17px;
+    color: #475569;
+    line-height: 1.8;
+    list-style: disc;
+    padding-left: 20px;
+  }
+</style>
+
   <section class="slide slide--content" id="slide-29">
     <div class="slide__inner">
       <p class="section-label">07 &mdash; プロジェクトの進め方</p>
       <h2 class="slide__title">スケジュール</h2>
-      <div class="schedule">
-        <div class="schedule__row">
-          <div class="schedule__phase">企画・設計</div>
-          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--1"></div></div>
-          <div class="schedule__period">Month 1-2</div>
+      <p class="slide__lead" style="margin-bottom: 24px;">2026年5月キックオフ、10月のサイト公開を目指します。</p>
+
+      <div class="gantt-area">
+        <table class="gantt">
+          <tr class="gantt-months">
+            <th></th>
+            <th>5月</th>
+            <th>6月</th>
+            <th>7月</th>
+            <th>8月</th>
+            <th>9月</th>
+            <th>10月</th>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>キックオフ・要件定義</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:0%; width:22%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>デザイン制作</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:11%; width:28%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>コーディング・CMS構築</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:28%; width:39%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>コンテンツ入稿・撮影</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:22%; width:39%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>採用サイト制作</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:44%; width:28%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>テスト・検証</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:67%; width:22%;"></div>
+            </td>
+          </tr>
+
+          <tr class="gantt-phase">
+            <td>公開後サポート</td>
+            <td colspan="6" style="position:relative;">
+              <div class="gantt-track"></div>
+              <div class="gantt-bar" style="left:83%; width:17%;"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 下部の補足 -->
+      <div class="schedule-notes">
+        <div class="schedule-notes__block schedule-notes__block--primary">
+          <p class="schedule-notes__title">進め方について</p>
+          <ul class="schedule-notes__list">
+            <li>各フェーズの節目で<strong>確認の場を設けながら</strong>進行します</li>
+            <li>デザイン確定後に開発着手し、<strong>手戻りを最小限に</strong></li>
+            <li>公開後も<strong>運用サポート体制</strong>をご用意しています</li>
+          </ul>
         </div>
-        <div class="schedule__row">
-          <div class="schedule__phase">デザイン</div>
-          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--2"></div></div>
-          <div class="schedule__period">Month 2-3</div>
-        </div>
-        <div class="schedule__row">
-          <div class="schedule__phase">コーディング・CMS構築</div>
-          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--3"></div></div>
-          <div class="schedule__period">Month 3-5</div>
-        </div>
-        <div class="schedule__row">
-          <div class="schedule__phase">テスト・修正</div>
-          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--4"></div></div>
-          <div class="schedule__period">Month 5-6</div>
-        </div>
-        <div class="schedule__row">
-          <div class="schedule__phase">公開・運用開始</div>
-          <div class="schedule__bar-area"><div class="schedule__bar schedule__bar--5"></div></div>
-          <div class="schedule__period">Month 6</div>
+        <div class="schedule-notes__block schedule-notes__block--secondary">
+          <p class="schedule-notes__title">ご協力いただく場面</p>
+          <ul class="schedule-notes__list">
+            <li>撮影・インタビューの<strong>日程調整</strong></li>
+            <li>既存素材（写真・パンフレット等）の<strong>ご共有</strong></li>
+            <li>公開前の<strong>最終チェック</strong></li>
+          </ul>
         </div>
       </div>
+
       <p class="slide__note">※ スケジュールは目安です。ご要望に応じて調整いたします。</p>
     </div>
-      <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
   </section>
