@@ -1,3 +1,9 @@
+  <style>
+    /* list-dot 位置補正（後でstyle.cssに統合） */
+    #slide-22 .list-dot {
+      margin-top: 18px;
+    }
+  </style>
   <section class="slide slide--solution" id="slide-22">
     <div class="slide__inner">
       <p class="section-label">06 &mdash; 各ページの設計</p>
@@ -5,31 +11,34 @@
       <div class="solution-layout">
         <div class="solution-col solution-col--issue">
           <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">必要な情報にすぐ<br>アクセスできないことで、<br>やり取りに時間がかかる<br>可能性</p>
+          <p class="solution-col__text">連携ページの情報不足により、<br>確認の電話が発生。<br>紹介判断に手間がかかっている</p>
         </div>
         <div class="solution-col solution-col--plan">
           <h3 class="solution-col__heading">施策</h3>
           <ul class="solution-col__list">
-            <li><span class="list-marker"></span><span>検査情報（検査機器一覧と対応内容）</span></li>
-            <li><span class="list-marker"></span><span>空床情報</span></li>
-            <li><span class="list-marker"></span><span>予約導線の整備</span></li>
-            <li><span class="list-marker"></span><span>紹介状テンプレート（PDF/DOC）+記入例</span></li>
+            <li><span class="list-marker"></span><span>ページ上部にクイック導線を配置</span></li>
+            <li><span class="list-marker"></span><span>検査情報・空床情報・予約導線の整備</span></li>
+            <li><span class="list-marker"></span><span>紹介状テンプレート（PDF/DOC）＋記入例</span></li>
             <li><span class="list-marker"></span><span>紹介〜退院〜逆紹介のフロー図解</span></li>
+            <li><span class="list-marker"></span><span>よくある紹介ケース別の導線</span></li>
           </ul>
+          <!-- WF画像：クイック導線 -->
+          <div style="margin-top: 20px;">
+            <img src="img/wf-renkei.png" alt="地域連携ページ WF" style="width: 100%; border-radius: 8px; border: 1px solid #E0E8E6;">
+          </div>
           <div class="solution-col__plus">
             <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
             <ul class="solution-col__list">
-              <li><span class="list-marker"></span><span>勉強会の告知・地域連携だよりの発信</span></li>
-              <li><span class="list-marker"></span><span>よくある紹介ケースの導線案内</span></li>
+              <li><span class="list-marker"></span><span>勉強会の告知・地域連携だよりの発信<br>&rarr; 継続的な情報発信による関係性強化</span></li>
             </ul>
           </div>
         </div>
         <div class="solution-col solution-col--effect">
           <h3 class="solution-col__heading">効果</h3>
           <ul class="solution-col__effect-list">
-            <li><span class="list-dot"></span><span>連携のスムーズ化</span></li>
-            <li><span class="list-dot"></span><span>紹介数の増加</span></li>
-            <li><span class="list-dot"></span><span>関係性の強化</span></li>
+            <li><span class="list-dot"></span><span>電話せずに<br>紹介判断できる状態</span></li>
+            <li><span class="list-dot"></span><span>連携のスムーズ化・<br>紹介数の増加</span></li>
+            <li><span class="list-dot"></span><span>新規クリニックとの<br>連携ハードル低下</span></li>
           </ul>
         </div>
       </div>
