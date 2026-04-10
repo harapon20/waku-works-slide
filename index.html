@@ -722,7 +722,8 @@ const slideFiles = [
 ];
 
 // 全スライドを並列fetchし、順序通りに挿入
-Promise.all(slideFiles.map(f => fetch(f).then(r => r.text())))
+const cacheBuster = '?v=' + Date.now();
+Promise.all(slideFiles.map(f => fetch(f + cacheBuster).then(r => r.text())))
   .then(htmls => {
     const container = document.getElementById('slidesContainer');
     container.innerHTML = htmls.join('\n');
