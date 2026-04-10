@@ -320,6 +320,41 @@
     }
 
     /* ========================================
+       COMPONENT: Objectives Grid
+       ======================================== */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+    }
+    .obj-card {
+      padding: 32px 36px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 16px;
+      background: #FFFFFF;
+    }
+    .obj-card__icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .obj-card__icon--brand { background: #FEF3C7; }
+    .obj-card__icon--recruit { background: #DBEAFE; }
+    .obj-card__icon--uiux { background: #E0E7FF; }
+    .obj-card__icon--connect { background: #D1FAE5; }
+    .obj-card__icon--ops { background: #F1F5F9; }
+    .obj-card__title {
+      font-size: 27px; font-weight: 700;
+      color: #0F172A; margin-bottom: 12px;
+    }
+    .obj-card__text {
+      font-size: 22px; color: #475569; line-height: 1.7;
+    }
+
+    /* ========================================
        COMPONENT: Target Layout
        ======================================== */
     .target__layout { display: flex; gap: 48px; flex: 1; }
@@ -477,8 +512,8 @@
       font-size: 20px; font-weight: 700; color: #059669;
       border-bottom: 2px solid #10B981; padding-bottom: 8px; margin-bottom: 0;
     }
-    .sitemap { display: flex; flex-direction: column; gap: 20px; }
-    .sitemap__top { display: flex; justify-content: center; }
+    .sitemap { display: flex; flex-direction: column; gap: 0; }
+    .sitemap__top { display: flex; justify-content: center; padding-bottom: 0; }
     .sitemap__node {
       padding: 12px 24px; border-radius: 6px;
       font-size: 20px; font-weight: 700; text-align: center;
@@ -491,8 +526,31 @@
       background: #F8FAFC; color: #059669;
       border: 1px solid #CBD5E1;
     }
-    .sitemap__branches { display: flex; gap: 16px; }
-    .sitemap__branch { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    /* 接続線: トップ→カテゴリ */
+    .sitemap__connector {
+      display: flex; justify-content: center; position: relative; height: 40px;
+    }
+    .sitemap__connector::before {
+      content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 20px;
+      background: #10B981;
+    }
+    .sitemap__connector::after {
+      content: ''; position: absolute; top: 20px; height: 2px;
+      background: #10B981;
+    }
+    .sitemap__connector--5::after {
+      left: 10%; right: 10%;
+    }
+    .sitemap__branches { display: flex; gap: 16px; position: relative; }
+    .sitemap__branch {
+      flex: 1; display: flex; flex-direction: column; gap: 10px;
+      position: relative;
+    }
+    /* 各カテゴリの上から伸びる縦線 */
+    .sitemap__branch::before {
+      content: ''; position: absolute; top: -20px; left: 50%;
+      width: 2px; height: 20px; background: #10B981;
+    }
     .sitemap__leaves { display: flex; flex-direction: column; gap: 4px; }
     .sitemap__leaf {
       padding: 6px 12px; background: #FFFFFF;
@@ -691,6 +749,7 @@ const slideFiles = [
   'slides/slide-02.html',
   'slides/slide-03.html',
   'slides/slide-04.html',
+  'slides/slide-04-2.html',
   'slides/slide-05.html',
   'slides/slide-06.html',
   'slides/slide-07.html',
