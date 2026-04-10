@@ -1,0 +1,128 @@
+  <style>
+    #slide-19-2 .wf-layout {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+      align-items: flex-start;
+      padding-top: 16px;
+    }
+    #slide-19-2 .wf-box {
+      background: #F7FAFA;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    #slide-19-2 .wf-box__label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #5BA88E;
+      letter-spacing: 0.1em;
+    }
+    #slide-19-2 .wf-content {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    #slide-19-2 .wf-images {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    #slide-19-2 .wf-images img {
+      border: 1px solid #E0E8E6;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+    #slide-19-2 .wf-images--sp img {
+      width: 200px;
+    }
+    #slide-19-2 .wf-images--drawer img {
+      width: 200px;
+    }
+    #slide-19-2 .wf-comments {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 4px;
+      min-width: 180px;
+    }
+    #slide-19-2 .wf-comments li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: #5A5A5A;
+      line-height: 1.6;
+      background: #fff;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #E0E8E6;
+    }
+    #slide-19-2 .wf-comments__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #CC3333;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  </style>
+  <section class="slide slide--content" id="slide-19-2">
+    <div class="slide__inner">
+      <p class="section-label">05 &mdash; サイト設計</p>
+      <h2 class="slide__title">スマートフォン ワイヤーフレーム</h2>
+      <p class="slide__lead">スマートフォンでの操作性を重視した設計です。</p>
+      <div class="wf-layout">
+
+        <!-- SP -->
+        <div class="wf-box">
+          <div style="display: flex; align-items: baseline; gap: 16px;">
+            <span class="wf-box__label">SP</span>
+            <span style="font-size: 13px; color: #8A8A8A; line-height: 1.4;">PC版の導線をSPに最適化したレイアウト</span>
+          </div>
+          <div class="wf-content">
+            <div class="wf-images wf-images--sp">
+              <img src="img/wf-top-sp-1.jpg" alt="SP WF 1" loading="lazy">
+              <img src="img/wf-top-sp-2.jpg" alt="SP WF 2" loading="lazy">
+              <img src="img/wf-top-sp-3.jpg" alt="SP WF 3" loading="lazy">
+              <img src="img/wf-top-sp-4.jpg" alt="SP WF 4" loading="lazy">
+            </div>
+            <ul class="wf-comments">
+              <li><span class="wf-comments__num">1</span><span>電話・予約・アクセスを<br>下部固定バーに常設</span></li>
+              <li><span class="wf-comments__num">2</span><span>状況別ナビ＋よく使う機能を<br>FV直下に配置</span></li>
+              <li><span class="wf-comments__num">3</span><span>「お困りですか？」ボタンで<br>お悩みナビにいつでもアクセス</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DRAWER -->
+        <div class="wf-box">
+          <div style="display: flex; align-items: baseline; gap: 16px;">
+            <span class="wf-box__label">DRAWER</span>
+            <span style="font-size: 13px; color: #8A8A8A; line-height: 1.4;">ワンタッチで目的に直結</span>
+          </div>
+          <div class="wf-content">
+            <div class="wf-images wf-images--drawer">
+              <img src="img/wf-top-drawer.jpg" alt="ドロワーメニュー WF" loading="lazy">
+            </div>
+            <ul class="wf-comments">
+              <li><span class="wf-comments__num">1</span><span>予約・外来日程・アクセスを<br>最上部にワンタップで</span></li>
+              <li><span class="wf-comments__num">2</span><span>アコーディオン形式で<br>全カテゴリに即アクセス</span></li>
+              <li><span class="wf-comments__num">3</span><span>医療機関・採用を<br>患者向けと明確に分離</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>

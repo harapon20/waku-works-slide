@@ -1,7 +1,7 @@
   <style>
     #slide-18-2 .wf-layout {
       display: flex;
-      gap: 32px;
+      gap: 16px;
       flex: 1;
       align-items: flex-start;
       padding-top: 16px;
@@ -13,53 +13,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-    }
-    #slide-18-2 .wf-box--pc {
-      flex-shrink: 0;
-    }
-    #slide-18-2 .wf-pc-content {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    #slide-18-2 .wf-pc-comments {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding-top: 4px;
-      min-width: 180px;
-    }
-    #slide-18-2 .wf-pc-comments li {
-      font-size: 13px;
-      color: #5A5A5A;
-      line-height: 1.6;
-      padding-left: 12px;
-      border-left: 2px solid #A8D5BA;
-    }
-    #slide-18-2 .wf-box--sp {
-      flex-shrink: 0;
-    }
-    #slide-18-2 .wf-box--drawer {
-      flex-shrink: 0;
-    }
-    #slide-18-2 .wf-sp-content {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    #slide-18-2 .wf-sp-comments {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding-top: 4px;
-      min-width: 160px;
-    }
-    #slide-18-2 .wf-sp-comments li {
-      font-size: 13px;
-      color: #5A5A5A;
-      line-height: 1.6;
-      padding-left: 12px;
-      border-left: 2px solid #A8D5BA;
+      flex: 1;
     }
     #slide-18-2 .wf-box__label {
       font-size: 16px;
@@ -67,78 +21,78 @@
       color: #5BA88E;
       letter-spacing: 0.1em;
     }
-    #slide-18-2 .wf-box__images {
+    #slide-18-2 .wf-content {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    #slide-18-2 .wf-images {
       display: flex;
       gap: 12px;
-      height: 600px;
+      align-items: flex-start;
     }
-    #slide-18-2 .wf-box__images img {
-      border-radius: 6px;
+    #slide-18-2 .wf-images img {
       border: 1px solid #E0E8E6;
-      height: 100%;
-      width: auto;
+      width: 450px;
       object-fit: contain;
     }
-    #slide-18-2 .wf-mobile-group__images {
+    #slide-18-2 .wf-comments {
       display: flex;
-      gap: 8px;
-      height: 580px;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 4px;
+      min-width: 220px;
     }
-    #slide-18-2 .wf-mobile-group__images img {
-      border-radius: 6px;
+    #slide-18-2 .wf-comments li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: #5A5A5A;
+      line-height: 1.6;
+      background: #fff;
+      padding: 12px 14px;
+      border-radius: 8px;
       border: 1px solid #E0E8E6;
-      height: 100%;
-      width: auto;
-      object-fit: contain;
+    }
+    #slide-18-2 .wf-comments__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #CC3333;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
     }
   </style>
   <section class="slide slide--content" id="slide-18-2">
     <div class="slide__inner">
       <p class="section-label">05 &mdash; サイト設計</p>
       <h2 class="slide__title">トップページ ワイヤーフレーム</h2>
-      <p class="slide__lead">PC・スマートフォン両対応で設計。主要な導線とコンテンツ構成をご確認いただけます。</p>
+      <p class="slide__lead">主要な導線とコンテンツ構成をご確認いただけます。</p>
       <div class="wf-layout">
-
-        <!-- PC -->
-        <div class="wf-box wf-box--pc">
-          <span class="wf-box__label">PC</span>
-          <div class="wf-pc-content">
-            <div class="wf-box__images">
+        <div class="wf-box">
+          <div style="display: flex; align-items: baseline; gap: 16px;">
+            <span class="wf-box__label">PC</span>
+            <span style="font-size: 13px; color: #8A8A8A; line-height: 1.4;">FV &rarr; 当院の特徴 &rarr; 症状ナビ &rarr; 診療科 &rarr; 医療関係者の方へ &rarr; お知らせ &rarr; アクセス</span>
+          </div>
+          <div class="wf-content">
+            <div class="wf-images">
               <img src="img/wf-top-pc-1.jpg" alt="トップページPC WF 上部" loading="lazy">
-              <img src="img/wf-top-pc-2.jpg" alt="トップページPC WF 下部" loading="lazy">
+              <img src="img/wf-top-pc-2.jpg" alt="トップページPC WF 中部" loading="lazy">
+              <img src="img/wf-top-pc-3.jpg" alt="トップページPC WF 下部" loading="lazy">
             </div>
-            <ul class="wf-pc-comments">
-              <li>FVに状況別ナビゲーション<br>（初めての方/再診/入院・お見舞い/医療機関の方）</li>
-              <li>「症状・お悩みから探す」<br>セクションで診療科へ誘導</li>
-              <li>セクション順：<br>FV &rarr; 症状ナビ &rarr; 診療科<br>&rarr; お知らせ &rarr; アクセス</li>
+            <ul class="wf-comments">
+              <li><span class="wf-comments__num">1</span><span>FVに状況別ナビゲーション<br>（初めての方/再診/入院・お見舞い/医療機関の方）</span></li>
+              <li><span class="wf-comments__num">2</span><span>「症状・お悩みから探す」<br>セクションで診療科へ誘導</span></li>
+              <li><span class="wf-comments__num">3</span><span>お困りですか？ボタン<br>（選択式お悩みナビ）を常設</span></li>
             </ul>
           </div>
         </div>
-
-        <!-- SP -->
-        <div class="wf-box wf-box--sp">
-          <span class="wf-box__label">SP</span>
-          <div class="wf-sp-content">
-            <div class="wf-mobile-group__images">
-              <img src="img/wf-top-sp-1.jpg" alt="トップページSP WF 上部" loading="lazy">
-              <img src="img/wf-top-sp-2.jpg" alt="トップページSP WF 下部" loading="lazy">
-            </div>
-            <ul class="wf-sp-comments">
-              <li>電話＋予約ボタンを最上部に配置</li>
-              <li>下部固定バー：<br>電話 / 予約 / アクセス / メニュー</li>
-              <li>PC版の導線をSPに最適化した構成</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- DRAWER -->
-        <div class="wf-box wf-box--drawer">
-          <span class="wf-box__label">DRAWER</span>
-          <div class="wf-mobile-group__images">
-            <img src="img/wf-top-drawer.jpg" alt="ドロワーメニュー WF" loading="lazy">
-          </div>
-        </div>
-
       </div>
     </div>
     <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
