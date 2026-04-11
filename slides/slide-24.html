@@ -1,47 +1,180 @@
   <style>
-    /* list-dot 位置補正（後でstyle.cssに統合） */
-    #slide-24 .list-dot {
-      margin-top: 18px;
+    #slide-24 .page-layout {
+      display: flex;
+      gap: 100px;
+      flex: 1;
+      align-items: stretch;
+      padding-top: 12px;
+    }
+    #slide-24 .page-layout__wf {
+      flex: 0 0 418px;
+      display: flex;
+      align-items: flex-start;
+    }
+    #slide-24 .page-layout__wf img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+    }
+    #slide-24 .page-layout__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #slide-24 .solution-col {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+    }
+    #slide-24 .solution-col--issue {
+      background: #FFF7ED;
+    }
+    #slide-24 .solution-col--plan {
+      background: #fff;
+    }
+    #slide-24 .solution-col--effect {
+      background: #ECFDF5;
+    }
+    #slide-24 .solution-col__heading {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid currentColor;
+    }
+    #slide-24 .solution-col--issue .solution-col__heading { color: #EA580C; }
+    #slide-24 .solution-col--plan .solution-col__heading { color: #10B981; }
+    #slide-24 .solution-col--effect .solution-col__heading { color: #059669; }
+    #slide-24 .solution-col__text {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    #slide-24 .solution-col__list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-24 .solution-col__list li {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-24 .solution-col__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 8px;
+      height: 2px;
+      background: #10B981;
+    }
+    #slide-24 .solution-col__effect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-24 .solution-col__effect-list li {
+      font-size: 17px;
+      color: #059669;
+      font-weight: 500;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-24 .solution-col__effect-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+    }
+    #slide-24 .solution-col__cost {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #E2E8F0;
+    }
+    #slide-24 .solution-col__cost-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #10B981;
+    }
+    #slide-24 .marker-plus {
+      position: relative;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #374151;
+      margin-right: 0.3em;
+      isolation: isolate;
+    }
+    #slide-24 .marker-plus::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: -2px;
+      right: -2px;
+      height: 0.4em;
+      background: rgba(251, 191, 36, 0.4);
+      border-radius: 2px;
+      transform: rotate(-0.5deg);
+      z-index: -1;
     }
   </style>
-  <section class="slide slide--solution" id="slide-24">
+  <section class="slide slide--content" id="slide-24">
     <div class="slide__inner">
       <p class="section-label">06 &mdash; 各ページの設計</p>
       <h2 class="slide__title">診療科ページ &amp; CMS導入</h2>
-      <div class="solution-layout">
-        <div class="solution-col solution-col--issue">
-          <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">診療科ごとに情報の<br>見せ方が異なり、<br>患者さまが必要な情報を<br>探しにくい。<br>更新のたびに外部依頼が<br>発生しコスト増。</p>
+      <div class="page-layout">
+
+        <!-- WF -->
+        <div class="page-layout__wf">
+          <img src="img/wf-department.jpg" alt="診療科ページ ワイヤーフレーム" loading="lazy">
         </div>
-        <div class="solution-col solution-col--plan">
-          <h3 class="solution-col__heading">施策</h3>
-          <ul class="solution-col__list">
-            <li><span class="list-marker"></span><span>全診療科を共通テンプレートで統一</span></li>
-            <li><span class="list-marker"></span><span>「こんな症状の方へ」と患者さまの言葉から始まる構成</span></li>
-            <li><span class="list-marker"></span><span>担当医紹介：経歴だけでなく、想い・患者さまとの関わり方まで</span></li>
-            <li><span class="list-marker"></span><span>CMS導入で院内更新可能に（お知らせ・募集要項・外来担当医）</span></li>
-            <li><span class="list-marker"></span><span>操作マニュアル＋初期レクチャー</span></li>
-          </ul>
-          <div class="solution-col__plus">
-            <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
+
+        <!-- 課題・施策・効果 -->
+        <div class="page-layout__body">
+
+          <div class="solution-col solution-col--issue">
+            <h3 class="solution-col__heading">課題</h3>
+            <p class="solution-col__text">診療科ごとに情報の見せ方が異なり、患者さまが必要な情報を探しにくい。更新のたびに外部依頼が発生しコスト増。</p>
+          </div>
+
+          <div class="solution-col solution-col--plan">
+            <h3 class="solution-col__heading">施策</h3>
             <ul class="solution-col__list">
-              <li><span class="list-marker"></span><span>よくある問い合わせの蓄積 &rarr; FAQ化</span></li>
-              <li><span class="list-marker"></span><span>地域連携だより・勉強会情報の発信</span></li>
+              <li>全診療科を共通テンプレートで統一</li>
+              <li>「こんな症状の方へ」と患者さまの言葉から始まる構成</li>
+              <li>担当医紹介：経歴だけでなく、想い・患者さまとの関わり方まで</li>
+              <li>CMS導入で院内更新可能に（お知らせ・募集要項・外来担当医）</li>
+              <li>操作マニュアル＋初期レクチャー</li>
+              <li><span class="marker-plus">+&alpha;</span>よくある問い合わせの蓄積 → FAQ化</li>
             </ul>
           </div>
-        </div>
-        <div class="solution-col solution-col--effect">
-          <h3 class="solution-col__heading">効果</h3>
-          <ul class="solution-col__effect-list">
-            <li><span class="list-dot"></span><span>どの診療科でも<br>迷わず情報が見つかる</span></li>
-            <li><span class="list-dot"></span><span>迅速な情報更新・<br>鮮度の維持</span></li>
-            <li><span class="list-dot"></span><span>運用コスト削減</span></li>
-          </ul>
-          <div class="solution-col__cost">
-            <p class="solution-col__cost-text">年間80万円 &rarr; 30〜40万円</p>
+
+          <div class="solution-col solution-col--effect">
+            <h3 class="solution-col__heading">効果</h3>
+            <ul class="solution-col__effect-list">
+              <li>どの診療科でも迷わず情報が見つかる</li>
+              <li>迅速な情報更新・鮮度の維持</li>
+              <li>運用コスト削減</li>
+            </ul>
+            <div class="solution-col__cost">
+              <p class="solution-col__cost-text">年間80万円 &rarr; 30〜40万円</p>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
-      <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
   </section>

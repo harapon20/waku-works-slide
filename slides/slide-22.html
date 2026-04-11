@@ -1,47 +1,167 @@
   <style>
-    /* list-dot 位置補正（後でstyle.cssに統合） */
-    #slide-22 .list-dot {
-      margin-top: 18px;
+    #slide-22 .page-layout {
+      display: flex;
+      gap: 100px;
+      flex: 1;
+      align-items: stretch;
+      padding-top: 12px;
+    }
+    #slide-22 .page-layout__wf {
+      flex: 0 0 418px;
+      display: flex;
+      align-items: flex-start;
+    }
+    #slide-22 .page-layout__wf img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+    }
+    #slide-22 .page-layout__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #slide-22 .solution-col {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+    }
+    #slide-22 .solution-col--issue {
+      background: #FFF7ED;
+    }
+    #slide-22 .solution-col--plan {
+      background: #fff;
+    }
+    #slide-22 .solution-col--effect {
+      background: #ECFDF5;
+    }
+    #slide-22 .solution-col__heading {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid currentColor;
+    }
+    #slide-22 .solution-col--issue .solution-col__heading { color: #EA580C; }
+    #slide-22 .solution-col--plan .solution-col__heading { color: #10B981; }
+    #slide-22 .solution-col--effect .solution-col__heading { color: #059669; }
+    #slide-22 .solution-col__text {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    #slide-22 .solution-col__list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-22 .solution-col__list li {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-22 .solution-col__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 8px;
+      height: 2px;
+      background: #10B981;
+    }
+    #slide-22 .solution-col__effect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-22 .solution-col__effect-list li {
+      font-size: 17px;
+      color: #059669;
+      font-weight: 500;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-22 .solution-col__effect-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+    }
+    #slide-22 .marker-plus {
+      position: relative;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #374151;
+      margin-right: 0.3em;
+      isolation: isolate;
+    }
+    #slide-22 .marker-plus::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: -2px;
+      right: -2px;
+      height: 0.4em;
+      background: rgba(251, 191, 36, 0.4);
+      border-radius: 2px;
+      transform: rotate(-0.5deg);
+      z-index: -1;
     }
   </style>
-  <section class="slide slide--solution" id="slide-22">
+  <section class="slide slide--content" id="slide-22">
     <div class="slide__inner">
       <p class="section-label">06 &mdash; 各ページの設計</p>
       <h2 class="slide__title">地域連携ページ</h2>
-      <div class="solution-layout">
-        <div class="solution-col solution-col--issue">
-          <h3 class="solution-col__heading">課題</h3>
-          <p class="solution-col__text">連携ページの情報不足により、<br>確認の電話が発生。<br>紹介判断に手間がかかっている</p>
+      <div class="page-layout">
+
+        <!-- WF -->
+        <div class="page-layout__wf">
+          <img src="img/wf-renkei.jpg" alt="地域連携ページ ワイヤーフレーム" loading="lazy">
         </div>
-        <div class="solution-col solution-col--plan">
-          <h3 class="solution-col__heading">施策</h3>
-          <ul class="solution-col__list">
-            <li><span class="list-marker"></span><span>ページ上部にクイック導線を配置</span></li>
-            <li><span class="list-marker"></span><span>検査情報・空床情報・予約導線の整備</span></li>
-            <li><span class="list-marker"></span><span>紹介状テンプレート（PDF/DOC）＋記入例</span></li>
-            <li><span class="list-marker"></span><span>紹介〜退院〜逆紹介のフロー図解</span></li>
-            <li><span class="list-marker"></span><span>よくある紹介ケース別の導線</span></li>
-          </ul>
-          <!-- WF画像：クイック導線 -->
-          <div style="margin-top: 20px;">
-            <img src="img/wf-renkei.png" alt="地域連携ページ WF" style="width: 100%; border-radius: 8px; border: 1px solid #E0E8E6;">
+
+        <!-- 課題・施策・効果 -->
+        <div class="page-layout__body">
+
+          <div class="solution-col solution-col--issue">
+            <h3 class="solution-col__heading">課題</h3>
+            <p class="solution-col__text">連携ページの情報不足により、確認の電話が発生。紹介判断に手間がかかっている</p>
           </div>
-          <div class="solution-col__plus">
-            <h4 class="solution-col__plus-heading">+&alpha; 提案</h4>
+
+          <div class="solution-col solution-col--plan">
+            <h3 class="solution-col__heading">施策</h3>
             <ul class="solution-col__list">
-              <li><span class="list-marker"></span><span>勉強会の告知・地域連携だよりの発信<br>&rarr; 継続的な情報発信による関係性強化</span></li>
+              <li>ページ上部にクイック導線を配置</li>
+              <li>検査情報・空床情報・予約導線の整備</li>
+              <li>紹介状テンプレート（PDF/DOC）＋記入例</li>
+              <li>紹介〜退院〜逆紹介のフロー図解</li>
+              <li>よくある紹介ケース別の導線</li>
+              <li><span class="marker-plus">+&alpha;</span>勉強会の告知・地域連携だよりの発信で関係性強化</li>
             </ul>
           </div>
-        </div>
-        <div class="solution-col solution-col--effect">
-          <h3 class="solution-col__heading">効果</h3>
-          <ul class="solution-col__effect-list">
-            <li><span class="list-dot"></span><span>電話せずに<br>紹介判断できる状態</span></li>
-            <li><span class="list-dot"></span><span>連携のスムーズ化・<br>紹介数の増加</span></li>
-            <li><span class="list-dot"></span><span>新規クリニックとの<br>連携ハードル低下</span></li>
-          </ul>
+
+          <div class="solution-col solution-col--effect">
+            <h3 class="solution-col__heading">効果</h3>
+            <ul class="solution-col__effect-list">
+              <li>電話せずに紹介判断できる状態</li>
+              <li>連携のスムーズ化・紹介数の増加</li>
+              <li>新規クリニックとの連携ハードル低下</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
-      <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
   </section>
