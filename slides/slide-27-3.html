@@ -1,0 +1,292 @@
+<style>
+  #slide-27-3 .support-layout {
+    display: flex;
+    gap: 100px;
+    flex: 1;
+    align-items: stretch;
+    padding-top: 12px;
+  }
+  #slide-27-3 .support-layout__visual {
+    flex: 0 0 418px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  #slide-27-3 .support-layout__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  /* 保守カード */
+  #slide-27-3 .maint-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  #slide-27-3 .maint-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #10B981;
+  }
+  #slide-27-3 .maint-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: #F8FAFC;
+    border-radius: 8px;
+  }
+  #slide-27-3 .maint-item__icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #slide-27-3 .maint-item__icon--plugin { background: #DBEAFE; }
+  #slide-27-3 .maint-item__icon--core { background: #E0E7FF; }
+  #slide-27-3 .maint-item__icon--backup { background: #D1FAE5; }
+  #slide-27-3 .maint-item__icon--server { background: #FEF3C7; }
+  #slide-27-3 .maint-item__icon svg { width: 22px; height: 22px; }
+  #slide-27-3 .maint-item__content { flex: 1; }
+  #slide-27-3 .maint-item__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 2px;
+  }
+  #slide-27-3 .maint-item__desc {
+    font-size: 13px;
+    color: #64748B;
+  }
+  #slide-27-3 .maint-item__freq {
+    font-size: 12px;
+    font-weight: 600;
+    color: #10B981;
+    background: #ECFDF5;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  /* コスト比較 */
+  #slide-27-3 .cost-compare {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  #slide-27-3 .cost-compare__before {
+    text-align: center;
+  }
+  #slide-27-3 .cost-compare__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748B;
+    margin-bottom: 4px;
+  }
+  #slide-27-3 .cost-compare__value--before {
+    font-size: 22px;
+    font-weight: 700;
+    color: #94A3B8;
+    text-decoration: line-through;
+  }
+  #slide-27-3 .cost-compare__arrow {
+    font-size: 24px;
+    color: #10B981;
+    font-weight: 700;
+  }
+  #slide-27-3 .cost-compare__after {
+    text-align: center;
+    flex: 1;
+  }
+  #slide-27-3 .cost-compare__value--after {
+    font-size: 28px;
+    font-weight: 700;
+    color: #10B981;
+  }
+  #slide-27-3 .cost-compare__sub {
+    font-size: 15px;
+    color: #64748B;
+    margin-top: 2px;
+  }
+  #slide-27-3 .cost-compare__note {
+    font-size: 14px;
+    font-weight: 600;
+    color: #059669;
+    margin-top: 6px;
+    background: #ECFDF5;
+    padding: 3px 12px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  /* 説明ブロック */
+  #slide-27-3 .info-col {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+  }
+  #slide-27-3 .info-col--scope { background: #F8FAFC; }
+  #slide-27-3 .info-col--cost { background: #FFFFFF; }
+  #slide-27-3 .info-col--promise { background: #ECFDF5; }
+  #slide-27-3 .info-col__heading {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+  #slide-27-3 .info-col--scope .info-col__heading { color: #2563EB; }
+  #slide-27-3 .info-col--cost .info-col__heading { color: #10B981; }
+  #slide-27-3 .info-col--promise .info-col__heading { color: #059669; }
+  #slide-27-3 .info-col__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #slide-27-3 .info-col__list li {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+  #slide-27-3 .info-col__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 2px;
+    background: #10B981;
+  }
+  #slide-27-3 .info-col__promise-list li {
+    color: #059669;
+    font-weight: 500;
+  }
+  #slide-27-3 .info-col__promise-list li::before {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+    top: 9px;
+  }
+</style>
+
+  <section class="slide slide--content" id="slide-27-3">
+    <div class="slide__inner">
+      <p class="section-label">07 &mdash; プロジェクトの進め方</p>
+      <h2 class="slide__title">サイトの管理もお任せ</h2>
+      <div class="support-layout">
+
+        <!-- 左: 保守項目 + コスト比較 -->
+        <div class="support-layout__visual">
+          <div class="maint-card">
+            <p class="maint-card__title">定期メンテナンス項目</p>
+            <div class="maint-item">
+              <div class="maint-item__icon maint-item__icon--plugin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+              </div>
+              <div class="maint-item__content">
+                <p class="maint-item__name">プラグイン更新</p>
+                <p class="maint-item__desc">全プラグインを最新版に更新・動作確認</p>
+              </div>
+              <span class="maint-item__freq">月1回</span>
+            </div>
+            <div class="maint-item">
+              <div class="maint-item__icon maint-item__icon--core">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="maint-item__content">
+                <p class="maint-item__name">WordPress本体の更新</p>
+                <p class="maint-item__desc">コアアップデート・セキュリティパッチ適用</p>
+              </div>
+              <span class="maint-item__freq">随時</span>
+            </div>
+            <div class="maint-item">
+              <div class="maint-item__icon maint-item__icon--backup">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+              <div class="maint-item__content">
+                <p class="maint-item__name">バックアップ対応</p>
+                <p class="maint-item__desc">データベース・ファイルの自動バックアップ</p>
+              </div>
+              <span class="maint-item__freq">随時</span>
+            </div>
+            <div class="maint-item">
+              <div class="maint-item__icon maint-item__icon--server">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </div>
+              <div class="maint-item__content">
+                <p class="maint-item__name">サーバー管理</p>
+                <p class="maint-item__desc">レンタルサーバーの管理・更新対応</p>
+              </div>
+              <span class="maint-item__freq">常時</span>
+            </div>
+          </div>
+          <div class="cost-compare">
+            <div class="cost-compare__before">
+              <p class="cost-compare__label">現在の運用保守費</p>
+              <p class="cost-compare__value--before">年間 80万円</p>
+            </div>
+            <span class="cost-compare__arrow">&rarr;</span>
+            <div class="cost-compare__after">
+              <p class="cost-compare__label">CMS導入後</p>
+              <p class="cost-compare__value--after">月額 3万円</p>
+              <p class="cost-compare__sub">（年間36万円）</p>
+              <p class="cost-compare__note">運用コストを<br><span style="text-decoration: underline; text-underline-offset: 3px;">半分以下</span>に削減</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右: 説明 -->
+        <div class="support-layout__body">
+
+          <div class="info-col info-col--scope">
+            <h3 class="info-col__heading">なぜコストが下がるのか</h3>
+            <ul class="info-col__list">
+              <li>CMS導入により、テキスト・画像の更新を院内で完結</li>
+              <li>更新のたびに外部へ依頼する費用が不要に</li>
+              <li>保守は技術的な維持管理のみ &#8212; シンプルな体制へ</li>
+            </ul>
+          </div>
+
+          <div class="info-col info-col--cost">
+            <h3 class="info-col__heading">月額費用に含まれるもの</h3>
+            <ul class="info-col__list">
+              <li>WordPress本体・プラグインの定期アップデート</li>
+              <li>バックアップ対応（随時）</li>
+              <li>レンタルサーバーの管理</li>
+              <li>月次アクセスレポートの作成・送付</li>
+              <li>CMS操作に関するご質問・サポート対応</li>
+            </ul>
+          </div>
+
+          <div class="info-col info-col--promise">
+            <h3 class="info-col__heading">メリット</h3>
+            <ul class="info-col__list info-col__promise-list">
+              <li>技術的なことは全てお任せいただけます</li>
+              <li>貴院は本来の医療業務に集中できる環境をつくります</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>

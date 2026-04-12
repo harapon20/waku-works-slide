@@ -1,27 +1,63 @@
 <style>
-  #slide-28 .cost-table__group td {
-    padding: 14px 32px;
+  #slide-28-3 .cost-table__group td {
+    padding: 12px 32px;
     font-size: 22px;
     font-weight: 700;
     color: #1E293B;
     border-bottom: 1px solid #E2E8F0;
   }
-  #slide-28 .cost-table__child .cost-table__td {
+  #slide-28-3 .cost-table__child .cost-table__td {
     padding-left: 56px !important;
     font-size: 19px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
-  #slide-28 .cost-table__subtotal td {
-    font-weight: 600;
+  #slide-28-3 .slide__diff-box {
+    margin-bottom: 16px;
+    padding: 10px 18px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+  }
+  #slide-28-3 .slide__diff-box__title {
+    font-size: 18px;
+    font-weight: 700;
     color: #0F172A;
-    border-bottom: 2px solid #E2E8F0;
-    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  #slide-28-3 .slide__diff-box__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  #slide-28-3 .slide__diff-box__item {
+    font-size: 17px;
+    color: #475569;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  #slide-28-3 .slide__diff-box__item::before {
+    content: "・";
+    position: absolute;
+    left: 0;
   }
 </style>
 
-  <section class="slide slide--content" id="slide-28">
+  <section class="slide slide--content" id="slide-28-3">
     <div class="slide__inner">
       <p class="section-label">07 &mdash; プロジェクトの進め方</p>
-      <h2 class="slide__title">費用 ― パターンA：フル構築プラン</h2>
+      <h2 class="slide__title">費用 ― パターンB：CMS一部削減・採用サイト1ページ構成</h2>
+
+      <div class="slide__diff-box">
+        <p class="slide__diff-box__title">【パターンAとの主な違い】</p>
+        <div class="slide__diff-box__list">
+          <p class="slide__diff-box__item">採用サイトを複数ページ構成から1ページ構成に変更</p>
+          <p class="slide__diff-box__item">CMS管理対象から外来診療日程表・担当医表、休診情報、地域連携だより・勉強会を除外</p>
+          <p class="slide__diff-box__item">先輩インタビューはCMS管理ではなく固定コンテンツとして掲載</p>
+        </div>
+      </div>
+
       <div class="cost-table-wrap">
         <table class="cost-table">
           <thead>
@@ -34,12 +70,12 @@
           <tbody>
             <tr class="cost-table__group">
               <td colspan="2">本サイト</td>
-              <td class="cost-table__td--price">&yen;4,150,000</td>
+              <td class="cost-table__td--price">&yen;3,900,000</td>
             </tr>
             <tr class="cost-table__child">
               <td class="cost-table__td">企画・設計</td>
               <td class="cost-table__td">ディレクション、要件定義、情報設計、ワイヤーフレーム</td>
-              <td class="cost-table__td cost-table__td--price">&yen;1,100,000</td>
+              <td class="cost-table__td cost-table__td--price">&yen;1,000,000</td>
             </tr>
             <tr class="cost-table__child">
               <td class="cost-table__td">デザイン</td>
@@ -53,8 +89,8 @@
             </tr>
             <tr class="cost-table__child">
               <td class="cost-table__td">CMS構築</td>
-              <td class="cost-table__td">WordPress導入、カスタム投稿設定、各種管理機能</td>
-              <td class="cost-table__td cost-table__td--price">&yen;600,000</td>
+              <td class="cost-table__td">WordPress導入、カスタム投稿設定、管理機能（一部削減）</td>
+              <td class="cost-table__td cost-table__td--price">&yen;450,000</td>
             </tr>
             <tr class="cost-table__child">
               <td class="cost-table__td">テスト・公開</td>
@@ -63,8 +99,8 @@
             </tr>
             <tr class="cost-table__group">
               <td class="cost-table__td">採用サイト</td>
-              <td class="cost-table__td">企画・デザイン・構築・CMS・テスト・公開（全6ページ）</td>
-              <td class="cost-table__td cost-table__td--price">&yen;1,200,000</td>
+              <td class="cost-table__td">企画・デザイン・構築・CMS・テスト・公開（1ページ構成）</td>
+              <td class="cost-table__td cost-table__td--price">&yen;550,000</td>
             </tr>
             <tr class="cost-table__group">
               <td class="cost-table__td">50周年特設ページ</td>
@@ -75,11 +111,10 @@
           <tfoot>
             <tr>
               <td class="cost-table__td cost-table__td--total" colspan="2">合計（税別）</td>
-              <td class="cost-table__td cost-table__td--total cost-table__td--price">&yen;5,800,000</td>
+              <td class="cost-table__td cost-table__td--total cost-table__td--price">&yen;4,900,000</td>
             </tr>
           </tfoot>
         </table>
-        <p class="slide__note">※ 詳細は次ページの費用明細をご参照ください。</p>
       </div>
     </div>
       <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">

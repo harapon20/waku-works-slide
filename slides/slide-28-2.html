@@ -1,0 +1,219 @@
+<style>
+  #slide-28-2 .estimate-layout {
+    display: flex;
+    gap: 32px;
+    flex: 1;
+    align-items: flex-start;
+    padding-top: 4px;
+  }
+  #slide-28-2 .estimate-layout__table {
+    flex: 1;
+    min-width: 0;
+  }
+  #slide-28-2 .estimate-layout__notes {
+    flex: 0 0 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  /* 見積テーブル */
+  #slide-28-2 .est-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #slide-28-2 .est-table th {
+    background: #F1F5F9;
+    font-weight: 700;
+    font-size: 10px;
+    color: #475569;
+    padding: 2px 6px;
+    text-align: left;
+    border-bottom: 2px solid #CBD5E1;
+  }
+  #slide-28-2 .est-table th:nth-child(3),
+  #slide-28-2 .est-table th:nth-child(4) {
+    text-align: right;
+  }
+  #slide-28-2 .est-cat {
+    background: #F8FAFC;
+    font-weight: 700;
+    font-size: 10px;
+    color: #0F172A;
+    padding: 1px 6px;
+    border-bottom: 1px solid #E2E8F0;
+    letter-spacing: 0.05em;
+    text-align: left !important;
+  }
+  #slide-28-2 .est-table td {
+    padding: 1px 6px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #475569;
+    font-size: 10px;
+    vertical-align: top;
+    line-height: 1.3;
+  }
+  #slide-28-2 .est-table td:nth-child(3),
+  #slide-28-2 .est-table td:nth-child(4) {
+    text-align: right;
+    white-space: nowrap;
+  }
+  #slide-28-2 .est-table td:nth-child(1) {
+    color: #94A3B8;
+    width: 20px;
+    text-align: right;
+    padding-right: 4px;
+  }
+  #slide-28-2 .est-total td {
+    font-weight: 700;
+    font-size: 11px;
+    color: #0F172A;
+    padding: 3px 6px;
+    border-top: 2px solid #10B981;
+    border-bottom: none;
+  }
+  /* 備考欄 */
+  #slide-28-2 .notes-box {
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #F8FAFC;
+  }
+  #slide-28-2 .notes-box__title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0F172A;
+    padding-bottom: 5px;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #10B981;
+  }
+  #slide-28-2 .notes-box__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  #slide-28-2 .notes-box__item {
+    font-size: 10px;
+    color: #475569;
+    line-height: 1.45;
+  }
+  #slide-28-2 .notes-box__item strong {
+    color: #0F172A;
+    font-weight: 600;
+  }
+  #slide-28-2 .notes-box__divider {
+    border: none;
+    border-top: 1px solid #E2E8F0;
+    margin: 6px 0;
+  }
+  #slide-28-2 .notes-box__general {
+    font-size: 10px;
+    color: #64748B;
+    line-height: 1.45;
+    padding-left: 12px;
+    position: relative;
+  }
+  #slide-28-2 .notes-box__general::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+  }
+</style>
+
+<section class="slide slide--content" id="slide-28-2" style="display:none;">
+  <div class="slide__inner">
+    <p class="section-label">07 &mdash; プロジェクトの進め方</p>
+    <h2 class="slide__title">費用明細</h2>
+    <div class="estimate-layout">
+
+      <!-- 左: 見積テーブル -->
+      <div class="estimate-layout__table">
+        <table class="est-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>項目</th>
+              <th>数量</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="4" class="est-cat">ディレクション</td></tr>
+            <tr><td>1</td><td>プロジェクト管理・進行管理</td><td>1式</td><td>500,000</td></tr>
+            <tr><td colspan="4" class="est-cat">本サイト企画</td></tr>
+            <tr><td>2</td><td>企画・設計 ※1</td><td>1式</td><td>600,000</td></tr>
+            <tr><td colspan="4" class="est-cat">本サイトデザイン</td></tr>
+            <tr><td>3</td><td>トップページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td>4</td><td>下層ページ ※2</td><td>16ページ</td><td>800,000</td></tr>
+            <tr><td>5</td><td>診療科テンプレート展開 ※3</td><td>8ページ</td><td>200,000</td></tr>
+            <tr><td colspan="4" class="est-cat">本サイトコーディング</td></tr>
+            <tr><td>6</td><td>トップページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td>7</td><td>下層ページ</td><td>16ページ</td><td>800,000</td></tr>
+            <tr><td>8</td><td>診療科テンプレート展開</td><td>8ページ</td><td>200,000</td></tr>
+            <tr><td colspan="4" class="est-cat">本サイトCMS構築</td></tr>
+            <tr><td>9</td><td>CMS基本構築・初期設定</td><td>1式</td><td>100,000</td></tr>
+            <tr><td>10</td><td>お知らせ投稿機能（カテゴリー分類含む）</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>11</td><td>外来診療日程表・担当医表管理機能</td><td>1式</td><td>100,000</td></tr>
+            <tr><td>12</td><td>休診情報・空床状況管理機能</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>13</td><td>地域連携だより・勉強会投稿機能</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>14</td><td>診療科情報管理機能 ※4</td><td>1式</td><td>100,000</td></tr>
+            <tr><td>15</td><td>お問い合わせフォーム</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>16</td><td>Web紹介予約フォーム ※5</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>17</td><td>テスト環境・本番環境構築</td><td>1式</td><td>50,000</td></tr>
+            <tr><td colspan="4" class="est-cat">採用サイトCMS構築</td></tr>
+            <tr><td>18</td><td>募集要項・インタビュー管理機能</td><td>1式</td><td>50,000</td></tr>
+            <tr><td>19</td><td>採用エントリーフォーム</td><td>1式</td><td>50,000</td></tr>
+            <tr><td colspan="4" class="est-cat">採用サイト企画</td></tr>
+            <tr><td>20</td><td>企画・設計（情報設計/ワイヤーフレーム）</td><td>1式</td><td>200,000</td></tr>
+            <tr><td colspan="4" class="est-cat">採用サイトデザイン</td></tr>
+            <tr><td>21</td><td>トップページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td>22</td><td>下層ページ ※6</td><td>5ページ</td><td>250,000</td></tr>
+            <tr><td colspan="4" class="est-cat">採用サイトコーディング</td></tr>
+            <tr><td>23</td><td>トップページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td>24</td><td>下層ページ</td><td>5ページ</td><td>250,000</td></tr>
+            <tr><td colspan="4" class="est-cat">50周年特設企画</td></tr>
+            <tr><td>25</td><td>企画・構成</td><td>1式</td><td>100,000</td></tr>
+            <tr><td colspan="4" class="est-cat">50周年特設デザイン</td></tr>
+            <tr><td>26</td><td>特設ページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td colspan="4" class="est-cat">50周年特設コーディング</td></tr>
+            <tr><td>27</td><td>特設ページ</td><td>1ページ</td><td>150,000</td></tr>
+            <tr><td colspan="4" class="est-cat">テスト・検証・公開</td></tr>
+            <tr><td>28</td><td>本サイト 検証・修正対応・公開作業</td><td>1式</td><td>150,000</td></tr>
+            <tr><td>29</td><td>採用サイト 検証・修正対応・公開作業</td><td>1式</td><td>100,000</td></tr>
+            <tr><td>30</td><td>50周年特設 検証・公開作業</td><td>1式</td><td>50,000</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="est-total">
+              <td></td>
+              <td colspan="2">小計（税抜）</td>
+              <td>&yen;5,800,000</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- 右: 備考欄 -->
+      <div class="estimate-layout__notes">
+        <div class="notes-box">
+          <p class="notes-box__title">備考欄</p>
+          <div class="notes-box__list">
+            <p class="notes-box__item"><strong>※1</strong> 要件定義 / 現状分析 / 情報設計 / ワイヤーフレーム</p>
+            <p class="notes-box__item"><strong>※2</strong> 病院概要 / 当院の特徴 / 施設案内 / 診療科一覧 / 外来診療日程表 / 初めて受診される方へ / 再診される方へ</p>
+            <p class="notes-box__item"><strong>※3</strong> 循環器内科 / 消化器内科 / 整形外科 / リハビリテーション科 / 放射線科 / 麻酔科 / 皮膚科 / 眼科（共通テンプレート）</p>
+            <p class="notes-box__item"><strong>※4</strong> 各診療科のページは、あらかじめ用意した「ひな型」をもとに構成されます。医師紹介や診療実績など</p>
+            <p class="notes-box__item"><strong>※5</strong> 医療機関向けWeb紹介予約受付</p>
+            <p class="notes-box__item"><strong>※6</strong> 募集要項 / 先輩インタビュー / 1日の流れ / 働く環境・福利厚生 / 採用エントリーフォーム</p>
+          </div>
+          <hr class="notes-box__divider">
+          <div class="notes-box__list">
+            <p class="notes-box__general">デザイン修正は各ページ2回まで含みます</p>
+            <p class="notes-box__general">原稿・写真等の素材はお客様にてご準備いただく前提です</p>
+            <p class="notes-box__general">撮影が必要な場合は別途お見積りとなります</p>
+            <p class="notes-box__general">採用サイトトップページは、募集要項・インタビュー等の新着情報を自動表示します</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+</section>
