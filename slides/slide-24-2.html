@@ -1,0 +1,158 @@
+  <style>
+    #slide-24-2 .page-layout {
+      display: flex;
+      gap: 100px;
+      flex: 1;
+      align-items: stretch;
+      padding-top: 12px;
+    }
+    #slide-24-2 .page-layout__wf {
+      flex: 0 0 418px;
+      display: flex;
+      align-items: flex-start;
+    }
+    #slide-24-2 .page-layout__wf img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+    }
+    #slide-24-2 .page-layout__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #slide-24-2 .solution-col {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+    }
+    #slide-24-2 .solution-col--issue {
+      background: #FFF7ED;
+    }
+    #slide-24-2 .solution-col--plan {
+      background: #fff;
+    }
+    #slide-24-2 .solution-col--effect {
+      background: #ECFDF5;
+    }
+    #slide-24-2 .solution-col__heading {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid currentColor;
+    }
+    #slide-24-2 .solution-col--issue .solution-col__heading { color: #EA580C; }
+    #slide-24-2 .solution-col--plan .solution-col__heading { color: #10B981; }
+    #slide-24-2 .solution-col--effect .solution-col__heading { color: #059669; }
+    #slide-24-2 .solution-col__text {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    #slide-24-2 .solution-col__list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-24-2 .solution-col__list li {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-24-2 .solution-col__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 8px;
+      height: 2px;
+      background: #10B981;
+    }
+    #slide-24-2 .solution-col__effect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #slide-24-2 .solution-col__effect-list li {
+      font-size: 17px;
+      color: #059669;
+      font-weight: 500;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    #slide-24-2 .solution-col__effect-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+    }
+    #slide-24-2 .solution-col__cost {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #E2E8F0;
+    }
+    #slide-24-2 .solution-col__cost-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #10B981;
+    }
+  </style>
+  <section class="slide slide--content" id="slide-24-2">
+    <div class="slide__inner">
+      <p class="section-label">06 &mdash; 下層ページの設計</p>
+      <h2 class="slide__title">CMS導入<span style="font-size: 0.7em; font-weight: 500; color: #475569;">（院内更新の仕組み）</span></h2>
+      <p class="slide__lead">院内スタッフだけで情報を更新できる体制をつくる</p>
+      <div class="page-layout">
+
+        <!-- WF（CMS管理画面イメージなど。なければ診療科WFを流用） -->
+        <div class="page-layout__wf">
+          <img src="img/wf-department.jpg" alt="CMS導入イメージ" loading="lazy">
+        </div>
+
+        <!-- 課題・施策・効果 -->
+        <div class="page-layout__body">
+
+          <div class="solution-col solution-col--issue">
+            <h3 class="solution-col__heading">現状の課題</h3>
+            <p class="solution-col__text">CMS未導入のため、お知らせや外来担当医の更新のたびに外部への依頼が必要で、コストと時間がかかっています。</p>
+          </div>
+
+          <div class="solution-col solution-col--plan">
+            <h3 class="solution-col__heading">施策</h3>
+            <ul class="solution-col__list">
+              <li>CMS（WordPress）を導入し、お知らせ・募集要項・外来担当医などを院内で更新できるようにします。</li>
+              <li>操作マニュアルを用意し、初期レクチャーを実施します。導入後もスムーズに運用できる体制を整えます。</li>
+              <li>更新頻度の高い情報から優先的にCMS化し、段階的に運用範囲を広げていきます。</li>
+            </ul>
+          </div>
+
+          <div class="solution-col solution-col--effect">
+            <h3 class="solution-col__heading">期待される効果</h3>
+            <ul class="solution-col__effect-list">
+              <li>情報をタイムリーに更新でき、常に最新の状態を保てます。</li>
+              <li>外部依頼のコスト・時間が大幅に削減されます。</li>
+              <li>削減した分を患者さま対応や情報発信に充て、医療サービスの質向上につなげます。</li>
+            </ul>
+            <div class="solution-col__cost">
+              <p class="solution-col__cost-text">運用コスト：年間80万円 &rarr; 30〜40万円</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>

@@ -99,41 +99,12 @@
       border-radius: 50%;
       background: linear-gradient(135deg, #A8D5BA, #85C5D3);
     }
-    #slide-24 .solution-col__cost {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid #E2E8F0;
-    }
-    #slide-24 .solution-col__cost-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #10B981;
-    }
-    #slide-24 .marker-plus {
-      position: relative;
-      font-size: 1.1em;
-      font-weight: 700;
-      color: #374151;
-      margin-right: 0.3em;
-      isolation: isolate;
-    }
-    #slide-24 .marker-plus::after {
-      content: "";
-      position: absolute;
-      bottom: 2px;
-      left: -2px;
-      right: -2px;
-      height: 0.4em;
-      background: rgba(251, 191, 36, 0.4);
-      border-radius: 2px;
-      transform: rotate(-0.5deg);
-      z-index: -1;
-    }
   </style>
   <section class="slide slide--content" id="slide-24">
     <div class="slide__inner">
-      <p class="section-label">06 &mdash; 各ページの設計</p>
-      <h2 class="slide__title">診療科ページ &amp; CMS導入</h2>
+      <p class="section-label">06 &mdash; 下層ページの設計</p>
+      <h2 class="slide__title">診療科ページ<span style="font-size: 0.7em; font-weight: 500; color: #475569;">（共通テンプレート）</span></h2>
+      <p class="slide__lead">患者さまの言葉から始まる、統一された診療科情報の設計</p>
       <div class="page-layout">
 
         <!-- WF -->
@@ -145,32 +116,27 @@
         <div class="page-layout__body">
 
           <div class="solution-col solution-col--issue">
-            <h3 class="solution-col__heading">課題</h3>
-            <p class="solution-col__text">診療科ごとに情報の見せ方が異なり、患者さまが必要な情報を探しにくい。更新のたびに外部依頼が発生しコスト増。</p>
+            <h3 class="solution-col__heading">現状の課題</h3>
+            <p class="solution-col__text">診療科ごとに情報の見せ方が異なり、患者さまが必要な情報を探しにくい状態です。</p>
           </div>
 
           <div class="solution-col solution-col--plan">
             <h3 class="solution-col__heading">施策</h3>
             <ul class="solution-col__list">
-              <li>全診療科を共通テンプレートで統一</li>
-              <li>「こんな症状の方へ」と患者さまの言葉から始まる構成</li>
-              <li>担当医紹介：経歴だけでなく、想い・患者さまとの関わり方まで</li>
-              <li>CMS導入で院内更新可能に（お知らせ・募集要項・外来担当医）</li>
-              <li>操作マニュアル＋初期レクチャー</li>
-              <li><span class="marker-plus">+&alpha;</span>よくある問い合わせの蓄積 → FAQ化</li>
+              <li>全診療科を共通テンプレートで統一し、どの診療科でも同じ構成で情報を確認できるようにしています。</li>
+              <li>「こんな症状の方へ」と患者さまの言葉から始まる構成にし、自分に合った診療科を見つけやすくしています。</li>
+              <li>担当医紹介では経歴だけでなく、想いや患者さまとの関わり方まで伝える設計にしています。</li>
+              <li style="color: #94A3B8;"><span style="color: #10B981; font-weight: 700;">+&alpha;</span> よくある問い合わせを蓄積し、FAQ化することで患者さまの疑問を事前に解消します。</li>
             </ul>
           </div>
 
           <div class="solution-col solution-col--effect">
-            <h3 class="solution-col__heading">効果</h3>
+            <h3 class="solution-col__heading">期待される効果</h3>
             <ul class="solution-col__effect-list">
-              <li>どの診療科でも迷わず情報が見つかる</li>
-              <li>迅速な情報更新・鮮度の維持</li>
-              <li>運用コスト削減</li>
+              <li>どの診療科でも迷わず必要な情報が見つかるようになります。</li>
+              <li>患者さまが「自分ごと」として診療内容を理解しやすくなります。</li>
+              <li>担当医への安心感が生まれ、受診のハードルが下がります。</li>
             </ul>
-            <div class="solution-col__cost">
-              <p class="solution-col__cost-text">年間80万円 &rarr; 30〜40万円</p>
-            </div>
           </div>
 
         </div>

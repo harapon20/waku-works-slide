@@ -76,9 +76,6 @@
       height: 2px;
       background: #10B981;
     }
-    #slide-21 .solution-col--issue .solution-col__list li::before {
-      background: #EA580C;
-    }
     #slide-21 .solution-col__effect-list {
       display: flex;
       flex-direction: column;
@@ -113,31 +110,12 @@
       border-radius: 6px;
       border: 1px solid #E2E8F0;
     }
-    #slide-21 .marker-plus {
-      position: relative;
-      font-size: 1.1em;
-      font-weight: 700;
-      color: #374151;
-      margin-right: 0.3em;
-      isolation: isolate;
-    }
-    #slide-21 .marker-plus::after {
-      content: "";
-      position: absolute;
-      bottom: 2px;
-      left: -2px;
-      right: -2px;
-      height: 0.4em;
-      background: rgba(251, 191, 36, 0.4);
-      border-radius: 2px;
-      transform: rotate(-0.5deg);
-      z-index: -1;
-    }
   </style>
   <section class="slide slide--content" id="slide-21">
     <div class="slide__inner">
-      <p class="section-label">06 &mdash; 各ページの設計</p>
-      <h2 class="slide__title">患者さま向けページ</h2>
+      <p class="section-label">06 &mdash; 下層ページの設計</p>
+      <h2 class="slide__title">患者さま向けページ<span style="font-size: 0.7em; font-weight: 500; color: #475569;">（初めて受診される方へ）</span></h2>
+      <p class="slide__lead">初めての受診における不安を解消する情報設計</p>
       <div class="page-layout">
 
         <!-- WF -->
@@ -149,29 +127,26 @@
         <div class="page-layout__body">
 
           <div class="solution-col solution-col--issue">
-            <h3 class="solution-col__heading">課題</h3>
-            <p class="solution-col__text">来院前の情報不足により、不安や電話問い合わせ（1日100件超）が発生</p>
+            <h3 class="solution-col__heading">現状の課題</h3>
+            <p class="solution-col__text">来院前に必要な情報が十分に伝わっていないため、不安や確認のための電話問い合わせが多く発生しています（1日100件以上）</p>
           </div>
 
           <div class="solution-col solution-col--plan">
             <h3 class="solution-col__heading">施策</h3>
-            <div class="solution-col__plan-inner">
-              <ul class="solution-col__list">
-                <li>初診案内：来院→受付→診察→検査→会計のステップUIで受診の流れを可視化</li>
-                <li>入院/面会案内：手続き・費用・生活を事前に把握できるよう整理</li>
-                <li>各ページにFAQ項目を設置し、サイト上での自己解決を促進</li>
-                <li><span class="marker-plus">+&alpha;</span>選択式お悩みナビで患者さまページへの誘導を強化</li>
-              </ul>
-              <img src="img/demo-navi-bot.png" alt="お悩みナビ デモ" loading="lazy">
-            </div>
+            <ul class="solution-col__list">
+              <li>来院から受付・診察・検査・会計までの流れを順番にわかりやすく掲載し、事前に全体の流れを把握できるようにしています。</li>
+              <li>入院や面会に関するページでは、手続きや費用、入院中の生活についてあらかじめ確認できるように整理しています。</li>
+              <li>よくある質問（FAQ）を各ページに掲載し、疑問点をすぐ解決できるようにしています。</li>
+              <li><span style="color: #10B981; font-weight: 700;">+&alpha;</span> <span style="color: #94A3B8;">「どのページを見ればよいか迷う方」に向けて、選択式の案内を用意し、目的に合ったページへスムーズに進めるようにしています。</span></li>
+            </ul>
           </div>
 
           <div class="solution-col solution-col--effect">
-            <h3 class="solution-col__heading">効果</h3>
+            <h3 class="solution-col__heading">期待される効果</h3>
             <ul class="solution-col__effect-list">
-              <li>初診の不安軽減 →「行く前からわかる」状態</li>
-              <li>電話問い合わせの削減</li>
-              <li>サイト上での自己解決率の向上</li>
+              <li>サイト上で、必要な情報にスムーズにたどり着けるようになります。</li>
+              <li>受診前の不安が軽減され、「行く前から安心できる状態」をつくります。</li>
+              <li>電話での問い合わせが減り、スタッフの対応負担を軽減します。</li>
             </ul>
           </div>
 

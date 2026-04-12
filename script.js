@@ -23,7 +23,7 @@ window.initSlides = function() {
     const scale = Math.min((vw - 64) / 1920, 1);
     slides.forEach(slide => {
       slide.style.transform = 'scale(' + scale + ')';
-      slide.style.marginBottom = (-1080 * (1 - scale)) + 'px';
+      slide.style.marginBottom = (-1358 * (1 - scale)) + 'px';
     });
   }
 
