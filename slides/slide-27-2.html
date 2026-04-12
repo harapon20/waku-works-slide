@@ -1,0 +1,314 @@
+<style>
+  #slide-27-2 .page-layout {
+    display: flex;
+    gap: 64px;
+    flex: 1;
+    align-items: stretch;
+    padding-top: 12px;
+  }
+  /* 左: WP管理画面モック */
+  #slide-27-2 .page-layout__wf {
+    flex: 0 0 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  #slide-27-2 .wp-window {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #slide-27-2 .wp-titlebar {
+    background: #E5E7EB;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #slide-27-2 .wp-titlebar__dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  #slide-27-2 .wp-titlebar__dot--r { background: #EF4444; }
+  #slide-27-2 .wp-titlebar__dot--y { background: #EAB308; }
+  #slide-27-2 .wp-titlebar__dot--g { background: #22C55E; }
+  #slide-27-2 .wp-addressbar {
+    background: #F3F4F6;
+    padding: 5px 14px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  #slide-27-2 .wp-addressbar__url {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: #6B7280;
+  }
+  #slide-27-2 .wp-body {
+    display: flex;
+    flex: 1;
+  }
+  #slide-27-2 .wp-sidebar {
+    width: 140px;
+    background: #1D2327;
+    padding: 8px 0;
+    flex-shrink: 0;
+  }
+  #slide-27-2 .wp-menu {
+    padding: 7px 14px;
+    font-size: 12px;
+    color: #B4B9BE;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #slide-27-2 .wp-menu--active {
+    background: #0073AA;
+    color: #FFFFFF;
+  }
+  #slide-27-2 .wp-menu__icon {
+    width: 14px; height: 14px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  #slide-27-2 .wp-main {
+    flex: 1;
+    background: #F0F0F1;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  #slide-27-2 .wp-main__title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1D2327;
+  }
+  #slide-27-2 .wp-editor {
+    background: #FFFFFF;
+    border: 1px solid #C3C4C7;
+    border-radius: 4px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #slide-27-2 .wp-editor__title {
+    padding: 10px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1D2327;
+    border-bottom: 1px solid #DCDCDE;
+  }
+  #slide-27-2 .wp-editor__toolbar {
+    display: flex;
+    gap: 3px;
+    padding: 5px 10px;
+    background: #F6F7F7;
+    border-bottom: 1px solid #DCDCDE;
+  }
+  #slide-27-2 .wp-editor__btn {
+    width: 22px; height: 22px;
+    background: #FFFFFF;
+    border: 1px solid #DCDCDE;
+    border-radius: 3px;
+  }
+  #slide-27-2 .wp-editor__body {
+    padding: 12px 14px;
+    flex: 1;
+  }
+  #slide-27-2 .wp-editor__line {
+    height: 7px;
+    background: #E5E7EB;
+    border-radius: 3px;
+    margin-bottom: 7px;
+  }
+  #slide-27-2 .wp-editor__line:nth-child(2) { width: 88%; }
+  #slide-27-2 .wp-editor__line:nth-child(3) { width: 72%; }
+  #slide-27-2 .wp-editor__line:nth-child(4) { width: 55%; }
+  #slide-27-2 .wp-publish {
+    padding: 10px 14px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #DCDCDE;
+  }
+  #slide-27-2 .wp-publish__btn {
+    background: #2271B1;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 18px;
+    border-radius: 4px;
+  }
+  /* 右: 説明ブロック（slide-24と同じパターン） */
+  #slide-27-2 .page-layout__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  #slide-27-2 .info-col {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+  }
+  #slide-27-2 .info-col--contents { background: #F8FAFC; }
+  #slide-27-2 .info-col--feature { background: #FFFFFF; }
+  #slide-27-2 .info-col--delivery { background: #ECFDF5; }
+  #slide-27-2 .info-col__heading {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+  #slide-27-2 .info-col--contents .info-col__heading { color: #2563EB; }
+  #slide-27-2 .info-col--feature .info-col__heading { color: #10B981; }
+  #slide-27-2 .info-col--delivery .info-col__heading { color: #059669; }
+  #slide-27-2 .info-col__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #slide-27-2 .info-col__list li {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+  #slide-27-2 .info-col__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 2px;
+    background: #10B981;
+  }
+  #slide-27-2 .info-col__delivery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #slide-27-2 .info-col__delivery-list li {
+    font-size: 18px;
+    color: #059669;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-left: 22px;
+    position: relative;
+  }
+  #slide-27-2 .info-col__delivery-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+  }
+</style>
+
+  <section class="slide slide--content" id="slide-27-2">
+    <div class="slide__inner">
+      <p class="section-label">07 &mdash; プロジェクトの進め方</p>
+      <h2 class="slide__title">「誰でも更新できる」まで設計する</h2>
+      <div class="page-layout">
+
+        <!-- 左: WP管理画面モック -->
+        <div class="page-layout__wf">
+          <div class="wp-window">
+            <div class="wp-titlebar">
+              <span class="wp-titlebar__dot wp-titlebar__dot--r"></span>
+              <span class="wp-titlebar__dot wp-titlebar__dot--y"></span>
+              <span class="wp-titlebar__dot wp-titlebar__dot--g"></span>
+            </div>
+            <div class="wp-addressbar">
+              <div class="wp-addressbar__url">kokura-hospital.squares.net/wp-admin/</div>
+            </div>
+            <div class="wp-body">
+              <div class="wp-sidebar">
+                <div class="wp-menu"><span class="wp-menu__icon"></span>ダッシュボード</div>
+                <div class="wp-menu wp-menu--active"><span class="wp-menu__icon"></span>投稿</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>メディア</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>固定ページ</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>外観</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>プラグイン</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>ユーザー</div>
+                <div class="wp-menu"><span class="wp-menu__icon"></span>設定</div>
+              </div>
+              <div class="wp-main">
+                <div class="wp-main__title">お知らせを編集</div>
+                <div class="wp-editor">
+                  <div class="wp-editor__title">4月の外来診療日程を更新しました</div>
+                  <div class="wp-editor__toolbar">
+                    <span class="wp-editor__btn"></span>
+                    <span class="wp-editor__btn"></span>
+                    <span class="wp-editor__btn"></span>
+                    <span class="wp-editor__btn"></span>
+                    <span class="wp-editor__btn"></span>
+                    <span class="wp-editor__btn"></span>
+                  </div>
+                  <div class="wp-editor__body">
+                    <div class="wp-editor__line"></div>
+                    <div class="wp-editor__line"></div>
+                    <div class="wp-editor__line"></div>
+                    <div class="wp-editor__line"></div>
+                  </div>
+                  <div class="wp-publish">
+                    <span class="wp-publish__btn">更新</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右: マニュアル説明 -->
+        <div class="page-layout__body">
+
+          <div class="info-col info-col--contents">
+            <h3 class="info-col__heading">マニュアル内容</h3>
+            <ul class="info-col__list">
+              <li>管理画面へのログイン方法</li>
+              <li>お知らせの投稿・編集・削除</li>
+              <li>診療科ページ・外来日程表の更新</li>
+              <li>画像のアップロードと差し替え</li>
+              <li>変更の保存・公開・プレビュー確認</li>
+            </ul>
+          </div>
+
+          <div class="info-col info-col--feature">
+            <h3 class="info-col__heading">特徴</h3>
+            <ul class="info-col__list">
+              <li>実際の管理画面のスクリーンショット付きで手順を解説</li>
+              <li>担当者が変わっても引き継ぎしやすい構成</li>
+              <li>院内で印刷してお使いいただけるA4形式</li>
+              <li>操作に不安がある場合はいつでもご相談可能</li>
+            </ul>
+          </div>
+
+          <div class="info-col info-col--delivery">
+            <h3 class="info-col__heading">お渡し方法</h3>
+            <ul class="info-col__delivery-list">
+              <li>公開時にPDF + 印刷版をお渡し</li>
+              <li>初回は対面またはオンラインで操作レクチャーを実施</li>
+              <li>サイト改修時はマニュアルも随時更新</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
+  </section>

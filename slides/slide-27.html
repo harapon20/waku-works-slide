@@ -1,101 +1,127 @@
 <style>
-  /* S27: 公開後の安心体制 */
-  .list-marker {
-    display: block;
+  #slide-27 .support-layout {
+    display: flex;
+    gap: 64px;
+    flex: 1;
+    align-items: stretch;
+    padding-top: 12px;
+  }
+  #slide-27 .support-layout__visual {
+    flex: 0 0 480px;
+    display: flex;
+    align-items: flex-start;
+  }
+  #slide-27 .support-layout__visual img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  #slide-27 .support-layout__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  /* 説明ブロック */
+  #slide-27 .info-col {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+  }
+  #slide-27 .info-col--what { background: #F8FAFC; }
+  #slide-27 .info-col--how { background: #FFFFFF; }
+  #slide-27 .info-col--merit { background: #ECFDF5; }
+  #slide-27 .info-col__heading {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+  #slide-27 .info-col--what .info-col__heading { color: #2563EB; }
+  #slide-27 .info-col--how .info-col__heading { color: #10B981; }
+  #slide-27 .info-col--merit .info-col__heading { color: #059669; }
+  #slide-27 .info-col__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #slide-27 .info-col__list li {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+  #slide-27 .info-col__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
     width: 8px;
     height: 2px;
     background: #10B981;
-    margin-top: 20px;
-    flex-shrink: 0;
   }
-  .feature-block__subtitle {
-    display: inline-block;
-    width: fit-content;
-    font-size: 20px;
-    font-weight: 700;
-    color: #10B981;
-    letter-spacing: 0.05em;
-    margin-bottom: 24px;
-    padding: 5px 18px;
-    background: #ECFDF5;
-    border-radius: 4px;
-  }
-  .feature-block__list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1;
-  }
-  .feature-block__list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 25px;
-    color: #475569;
-    line-height: 1.7;
-  }
-  #slide-27 .three-col {
-    display: flex;
-    align-items: stretch;
-  }
-  #slide-27 .feature-block {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .feature-block__note {
-    margin-top: auto;
-    padding-top: 24px;
-    border-top: 1px solid #E2E8F0;
-    font-size: 20px;
-    font-weight: 500;
+  #slide-27 .info-col__merit-list li {
     color: #059669;
-    line-height: 1.7;
+    font-weight: 500;
+  }
+  #slide-27 .info-col__merit-list li::before {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A8D5BA, #85C5D3);
+    top: 9px;
   }
 </style>
 
   <section class="slide slide--content" id="slide-27">
     <div class="slide__inner">
       <p class="section-label">07 &mdash; プロジェクトの進め方</p>
-      <h2 class="slide__title">公開後の安心体制</h2>
-      <p class="slide__lead">サイトの状況把握・トラブル対応・日常の保守まで、公開後もお任せいただける体制です。</p>
-      <div class="three-col">
+      <h2 class="slide__title">サイトの状況がわかる</h2>
+      <div class="support-layout">
 
-        <!-- 柱1: サイトの状況がわかる -->
-        <div class="feature-block">
-          <h3 class="feature-block__title">サイトの状況がわかる</h3>
-          <p class="feature-block__subtitle">毎月 ＋ 3ヶ月に1回</p>
-          <ul class="feature-block__list">
-            <li><span class="list-marker"></span><span>毎月のアクセス状況を<br>A4一枚でご報告</span></li>
-            <li><span class="list-marker"></span><span>3ヶ月ごとに紹介件数等も<br>合わせた総合レポート</span></li>
-            <li><span class="list-marker"></span><span>どなたにもそのままお渡しできる<br>わかりやすい形でお届け</span></li>
-          </ul>
-          <p class="feature-block__note">レポートは自動作成。<br>病院側の作業負担はありません。</p>
+        <!-- 左: レポート画像 -->
+        <div class="support-layout__visual">
+          <img src="img/ReportPage.jpg" alt="月次アクセスレポート サンプル" loading="lazy">
         </div>
 
-        <!-- 柱2: 困ったときに頼れる -->
-        <div class="feature-block">
-          <h3 class="feature-block__title">困ったときに頼れる</h3>
-          <p class="feature-block__subtitle">随時対応</p>
-          <ul class="feature-block__list">
-            <li><span class="list-marker"></span><span>サイトの不具合・表示崩れに<br>迅速対応</span></li>
-            <li><span class="list-marker"></span><span>お知らせ更新・情報変更など<br>CMS操作のご相談</span></li>
-            <li><span class="list-marker"></span><span>操作マニュアル＋<br>初期レクチャーもご用意</span></li>
-          </ul>
-          <p class="feature-block__note">「どうすればいい？」を<br>気軽に聞ける窓口があります。</p>
-        </div>
+        <!-- 右: 説明 -->
+        <div class="support-layout__body">
 
-        <!-- 柱3: 任せておける -->
-        <div class="feature-block">
-          <h3 class="feature-block__title">任せておける</h3>
-          <p class="feature-block__subtitle">定期メンテナンス</p>
-          <ul class="feature-block__list">
-            <li><span class="list-marker"></span><span>システムの更新・<br>セキュリティ対策を定期実施</span></li>
-            <li><span class="list-marker"></span><span>万が一に備えた<br>バックアップ体制</span></li>
-            <li><span class="list-marker"></span><span>SSL証明書・サーバーの管理</span></li>
-          </ul>
-          <p class="feature-block__note">技術的なことは<br>全てお任せいただけます。</p>
-        </div>
+          <div class="info-col info-col--what">
+            <h3 class="info-col__heading">レポート内容</h3>
+            <ul class="info-col__list">
+              <li>Google Analyticsのデータをもとに毎月A4一枚で作成</li>
+              <li>PV・訪問者数・流入経路・デバイス比率を一覧化</li>
+              <li>よく見られているページ TOP5 / 検索キーワード TOP5</li>
+              <li>今月のトピック＋改善提案（ネクストアクション）を記載</li>
+            </ul>
+          </div>
 
+          <div class="info-col info-col--how">
+            <h3 class="info-col__heading">特徴</h3>
+            <ul class="info-col__list">
+              <li>「誰も見ない」アナリティクス画面を、わかりやすく要約</li>
+              <li>前月比の変化が一目でわかる構成</li>
+              <li>数値の報告だけでなく、具体的な改善提案もセットでお届け</li>
+            </ul>
+          </div>
+
+          <div class="info-col info-col--merit">
+            <h3 class="info-col__heading">メリット</h3>
+            <ul class="info-col__list info-col__merit-list">
+              <li>GA画面を見る必要なし &#8212; レポートだけで状況が把握できる</li>
+              <li>サイトの効果を数値で実感できる</li>
+              <li>次の改善アクションが明確になる</li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </div>
     <img class="slide__logo" src="ロゴ.png" alt="waku &amp; works">
